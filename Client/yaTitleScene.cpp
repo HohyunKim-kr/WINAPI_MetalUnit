@@ -19,7 +19,6 @@ namespace ya
 		{
 			SceneManager::LoadScene(eSceneType::Play);
 		}
-
 	}
 	void TitleScene::Render(HDC hdc)
 	{

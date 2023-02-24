@@ -45,6 +45,7 @@ namespace ya
 		{
 			pos.y += 100.0f * Time::DeltaTime();
 		}
+	
 		tr->SetPos(pos);
 	}
 	void Cuphead::Render(HDC hdc)
