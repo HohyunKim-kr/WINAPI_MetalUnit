@@ -15,7 +15,6 @@ namespace ya
 
 	void PlayeScene::Initialize()
 	{
-		
 		mCuphead = new Cuphead();
 		AddGameObeject(mCuphead, eLayerType::Player);
 

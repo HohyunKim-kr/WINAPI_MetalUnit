@@ -15,7 +15,7 @@ namespace ya
 	}
 	void Cuphead::Initialize()
 	{
-		mImage = Resources::Load<Image>(L"Cuphead", L"..\\Resources\\Idle.bmp");
+		mImage = Resources::Load<Image>(L"stone", L"..\\Resources\\KakaoTalk_20230224_185409179.bmp");
 
 		GameObject::Initialize();
 	}
