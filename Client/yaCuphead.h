@@ -17,5 +17,7 @@ namespace ya
 		
 	private:
 		Image* mImage;
+		float mTime;
+		int mIdx;
 	};
 }

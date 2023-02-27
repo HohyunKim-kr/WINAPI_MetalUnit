@@ -8,6 +8,8 @@
 namespace ya
 {
 	Cuphead::Cuphead()
+		:mTime(0.0f)
+		,mIdx(0)
 	{
 	}
 	Cuphead::~Cuphead()
@@ -15,7 +17,7 @@ namespace ya
 	}
 	void Cuphead::Initialize()
 	{
-		mImage = Resources::Load<Image>(L"stone", L"..\\Resources\\KakaoTalk_20230224_185409179.bmp");
+		mImage = Resources::Load<Image>(L"falcon", L"..\\Resources\\CharacterRun[8].bmp");
 
 		GameObject::Initialize();
 	}
@@ -53,7 +55,23 @@ namespace ya
 		GameObject::Render(hdc);
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPos();
-		BitBlt(hdc, pos.x, pos.y, mImage->GetWidth(), mImage->GetHeight(), mImage->GetHdc(), 0, 0, SRCCOPY);
+
+		mTime += Time::DeltaTime();
+
+		if (mIdx >= 8)
+		{
+			mIdx = 0;
+		}
+
+		if (mTime > 0.1f)
+		{
+			mIdx++;
+			mTime = 0.0f;
+		}
+		TransparentBlt(hdc, pos.x, pos.y, 55, 61, mImage->GetHdc(), (55 * mIdx), 0, 55 , 61, RGB(255, 0, 255));
+
+		
+		// BitBlt(hdc, pos.x, pos.y, mImage->GetWidth() * 2, mImage->GetHeight() * 2, mImage->GetHdc(), 0, 0, SRCCOPY);
 	}
 	void Cuphead::Release()
 	{

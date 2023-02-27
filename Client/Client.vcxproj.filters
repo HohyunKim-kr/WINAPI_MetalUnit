@@ -124,6 +124,12 @@
     <ClInclude Include="yaTransform.h">
       <Filter>Engine\Component</Filter>
     </ClInclude>
+    <ClInclude Include="yaAnimator.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="yaAnimation.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -191,6 +197,12 @@
       <Filter>Contents\Scene</Filter>
     </ClCompile>
     <ClCompile Include="yaTransform.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="yaAnimation.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="yaAnimator.cpp">
       <Filter>Engine\Component</Filter>
     </ClCompile>
   </ItemGroup>
