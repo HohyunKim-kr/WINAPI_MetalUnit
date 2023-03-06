@@ -24,7 +24,7 @@ namespace ya
 				continue;
 
 			scene->Initialize();
-		}
+ 		}
 	}
 
 	void SceneManager::Update()

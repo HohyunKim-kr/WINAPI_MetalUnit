@@ -18,9 +18,9 @@ namespace ya
 	{
 		Image*	mImage = Resources::Load<Image>(L"falcon", L"..\\Resources\\CharacterRun[8].bmp");
 		Animator* animator = AddComponent<Animator>();
-		animator->CreateAnimation(L"falcon", mImage, Vector2(0.0f, 113.0f * 5), 8, 1, 8, Vector2::Zero, 0.1);
+		animator->CreateAnimation(L"falcon", mImage, Vector2::Zero, 8, 1, 8, Vector2::Zero, 0.1);
 		
-		animator->Play(L"Idle", true);
+		animator->Play(L"falcon", true);
 
 		GameObject::Initialize();
 	}
