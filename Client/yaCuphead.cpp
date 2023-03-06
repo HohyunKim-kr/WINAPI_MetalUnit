@@ -18,10 +18,12 @@ namespace ya
 	{
 		Image*	mImage = Resources::Load<Image>(L"falcon_Idle", L"..\\Resources\\gp_Idle[5].bmp");
 		Image* mImage2 = Resources::Load<Image>(L"falcon_right", L"..\\Resources\\gp_right[8].bmp");
+		Image* mImage3 = Resources::Load<Image>(L"falcon_jump", L"..\\Resources\\gp_jump[4].bmp");
 		Animator* animator = AddComponent<Animator>();
 		animator->CreateAnimation(L"falcon_Idle", mImage, Vector2::Zero, 5, 1, 5, Vector2::Zero, 0.1);
 		animator->CreateAnimation(L"falcon_right", mImage2, Vector2::Zero, 8, 1, 8, Vector2::Zero, 0.1);
-		
+		animator->CreateAnimation(L"falcon_jump", mImage3, Vector2::Zero, 4, 1, 4, Vector2::Zero, 0.1);
+
 		animator->Play(L"falcon_Idle", true);
 
 		GameObject::Initialize();
@@ -48,6 +50,7 @@ namespace ya
 		{
 			animator->Play(L"falcon_right", true);
 		}
+
 		if (Input::GetKeyState(eKeyCode::D) == eKeyState::Up)
 		{
 			animator->Play(L"falcon_Idle", true);
@@ -61,6 +64,21 @@ namespace ya
 		if (Input::GetKeyState(eKeyCode::S) == eKeyState::Pressed)
 		{
 			pos.y += 100.0f * Time::DeltaTime();
+		}
+
+		if (Input::GetKeyState(eKeyCode::X) == eKeyState::Pressed)
+		{
+			pos.x += 100.0f * Time::DeltaTime();
+		}
+
+		if (Input::GetKeyState(eKeyCode::X) == eKeyState::Down)
+		{
+			animator->Play(L"falcon_jump", true);
+		}
+
+		if (Input::GetKeyState(eKeyCode::X) == eKeyState::Up)
+		{
+			animator->Play(L"falcon_Idle", true);
 		}
 	
 		tr->SetPos(pos);
