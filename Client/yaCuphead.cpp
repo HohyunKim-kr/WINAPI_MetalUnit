@@ -16,11 +16,13 @@ namespace ya
 	}
 	void Cuphead::Initialize()
 	{
-		Image*	mImage = Resources::Load<Image>(L"falcon", L"..\\Resources\\CharacterRun[8].bmp");
+		Image*	mImage = Resources::Load<Image>(L"falcon_Idle", L"..\\Resources\\gp_Idle[5].bmp");
+		Image* mImage2 = Resources::Load<Image>(L"falcon_right", L"..\\Resources\\gp_right[8].bmp");
 		Animator* animator = AddComponent<Animator>();
-		animator->CreateAnimation(L"falcon", mImage, Vector2::Zero, 8, 1, 8, Vector2::Zero, 0.1);
+		animator->CreateAnimation(L"falcon_Idle", mImage, Vector2::Zero, 5, 1, 5, Vector2::Zero, 0.1);
+		animator->CreateAnimation(L"falcon_right", mImage2, Vector2::Zero, 8, 1, 8, Vector2::Zero, 0.1);
 		
-		animator->Play(L"falcon", true);
+		animator->Play(L"falcon_Idle", true);
 
 		GameObject::Initialize();
 	}
@@ -31,6 +33,7 @@ namespace ya
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPos();
 
+		Animator* animator = GetComponent<Animator>();
 		if (Input::GetKeyState(eKeyCode::A) == eKeyState::Pressed)
 		{
 			pos.x -= 100.0f * Time::DeltaTime();
@@ -39,6 +42,15 @@ namespace ya
 		if (Input::GetKeyState(eKeyCode::D) == eKeyState::Pressed)
 		{
 			pos.x += 100.0f * Time::DeltaTime();
+		}
+
+		if (Input::GetKeyState(eKeyCode::D) == eKeyState::Down)
+		{
+			animator->Play(L"falcon_right", true);
+		}
+		if (Input::GetKeyState(eKeyCode::D) == eKeyState::Up)
+		{
+			animator->Play(L"falcon_Idle", true);
 		}
 
 		if (Input::GetKeyState(eKeyCode::W) == eKeyState::Pressed)
