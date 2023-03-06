@@ -4,12 +4,11 @@
 #include "yaInput.h"
 #include "yaResources.h"
 #include "yaTransform.h"
+#include "yaAnimator.h"
 
 namespace ya
 {
 	Cuphead::Cuphead()
-		:mTime(0.0f)
-		,mIdx(0)
 	{
 	}
 	Cuphead::~Cuphead()
@@ -17,7 +16,11 @@ namespace ya
 	}
 	void Cuphead::Initialize()
 	{
-		mImage = Resources::Load<Image>(L"falcon", L"..\\Resources\\CharacterRun[8].bmp");
+		Image*	mImage = Resources::Load<Image>(L"falcon", L"..\\Resources\\CharacterRun[8].bmp");
+		Animator* animator = AddComponent<Animator>();
+		animator->CreateAnimation(L"falcon", mImage, Vector2(0.0f, 113.0f * 5), 8, 1, 8, Vector2::Zero, 0.1);
+		
+		animator->Play(L"Idle", true);
 
 		GameObject::Initialize();
 	}
@@ -53,22 +56,22 @@ namespace ya
 	void Cuphead::Render(HDC hdc)
 	{
 		GameObject::Render(hdc);
-		Transform* tr = GetComponent<Transform>();
-		Vector2 pos = tr->GetPos();
-
-		mTime += Time::DeltaTime();
-
-		if (mIdx >= 8)
-		{
-			mIdx = 0;
-		}
-
-		if (mTime > 0.1f)
-		{
-			mIdx++;
-			mTime = 0.0f;
-		}
-		TransparentBlt(hdc, pos.x, pos.y, 55, 61, mImage->GetHdc(), (55 * mIdx), 0, 55 , 61, RGB(255, 0, 255));
+		// Transform* tr = GetComponent<Transform>();
+		// Vector2 pos = tr->GetPos();
+		// 
+		// mTime += Time::DeltaTime();
+		// 
+		// if (mIdx >= 8)
+		// {
+		// 	mIdx = 0;
+		// }
+		// 
+		// if (mTime > 0.1f)
+		// {
+		// 	mIdx++;
+		// 	mTime = 0.0f;
+		// }
+		// TransparentBlt(hdc, pos.x, pos.y, 55, 61, mImage->GetHdc(), (55 * mIdx), 0, 55 , 61, RGB(255, 0, 255));
 
 		
 		// BitBlt(hdc, pos.x, pos.y, mImage->GetWidth() * 2, mImage->GetHeight() * 2, mImage->GetHdc(), 0, 0, SRCCOPY);

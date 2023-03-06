@@ -38,8 +38,8 @@ namespace ya
 
 		mBackBuffer = CreateCompatibleBitmap(mHdc, mWidth, mHeight);
 		mBackHDC = CreateCompatibleDC(mHdc);
-		
-		HBITMAP defaultBitmap	
+
+		HBITMAP defaultBitmap
 			= (HBITMAP)SelectObject(mBackHDC, mBackBuffer);
 		DeleteObject(defaultBitmap);
 
@@ -63,21 +63,18 @@ namespace ya
 
 	void Application::Render()
 	{
-		//clear
+		// clear
 		clear();
 
 		Time::Render(mBackHDC);
 		Input::Render(mBackHDC);
 		SceneManager::Render(mBackHDC);
-		
+
 		// 백버퍼에 있는 그림을 원본버퍼에 그려줘야한다.
 		BitBlt(mHdc, 0, 0, mWidth, mHeight, mBackHDC, 0, 0, SRCCOPY);
 	}
 	void Application::clear()
 	{
-		// clear
-		//HBRUSH grayBrush = CreateSolidBrush(RGB(121, 121, 121));
-		//HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHDC,)
 		HBRUSH grayBrush = CreateSolidBrush(RGB(121, 121, 121));
 		HBRUSH oldBrush = (HBRUSH)SelectObject(mBackHDC, grayBrush);
 		Rectangle(mBackHDC, -1, -1, 1602, 902);

@@ -24,7 +24,7 @@ namespace ya
 	private:
 		HWND mHwnd;
 		HDC mHdc;
-		
+
 		//¹é¹öÆÛ
 		HBITMAP mBackBuffer;
 		HDC mBackHDC;
