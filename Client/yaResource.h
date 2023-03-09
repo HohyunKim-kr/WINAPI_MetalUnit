@@ -21,10 +21,10 @@ namespace ya
 		std::wstring mPath;
 	};
 
-	
+
 	//class Image : public Resource
 	//{
-			
+
 	//};
 
 	//class Sound : public Resource

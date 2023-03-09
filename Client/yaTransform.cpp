@@ -5,6 +5,8 @@ namespace ya
 {
 	Transform::Transform()
 		:Component(eComponentType::Transform)
+		, mPos(Vector2::Zero)
+		, mScale(Vector2::One)
 	{
 	}
 	Transform::~Transform()
