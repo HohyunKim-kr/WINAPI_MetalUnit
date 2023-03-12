@@ -50,6 +50,9 @@
     <Filter Include="Engine\Resource">
       <UniqueIdentifier>{25bd4d29-77ad-4205-b963-e464704dbafe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\SceneObj">
+      <UniqueIdentifier>{0c60b30a-752f-4d0b-b7e2-89714fa92365}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -130,6 +133,9 @@
     <ClInclude Include="yaAnimation.h">
       <Filter>Engine\Component</Filter>
     </ClInclude>
+    <ClInclude Include="yaBgPlayScene.h">
+      <Filter>Contents\SceneObj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -204,6 +210,9 @@
     </ClCompile>
     <ClCompile Include="yaAnimator.cpp">
       <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="yaBgPlayScene.cpp">
+      <Filter>Contents\SceneObj</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

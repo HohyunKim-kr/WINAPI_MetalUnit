@@ -1,4 +1,5 @@
 #include "yaPlayeScene.h"
+#include "yaBgPlayScene.h"
 #include "yaCuphead.h"
 #include "yaInput.h"
 #include "yaSceneManager.h"
@@ -15,6 +16,8 @@ namespace ya
 
 	void PlayeScene::Initialize()
 	{
+		mPlayScene = new yaBgPlayScene();
+		AddGameObeject(mPlayScene, eLayerType::BG);
 		mCuphead = new Cuphead();
 		AddGameObeject(mCuphead, eLayerType::Player);
 

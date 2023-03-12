@@ -1,9 +1,12 @@
 #pragma once
 #include "yaScene.h"
+#include "yaImage.h"
 
 namespace ya
 {
 	class Cuphead;
+	class yaBgPlayScene;
+
 	class PlayeScene : public Scene
 	{
 	public:
@@ -20,5 +23,6 @@ namespace ya
 
 	private:
 		Cuphead* mCuphead;
+		yaBgPlayScene* mPlayScene;
 	};
 }
