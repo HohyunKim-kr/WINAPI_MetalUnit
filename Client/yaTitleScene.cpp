@@ -1,6 +1,7 @@
 #include "yaTitleScene.h"
 #include "yaInput.h"
 #include "yaSceneManager.h"
+#include "yaBgTitleScene.h"
 
 namespace ya
 {
@@ -12,6 +13,10 @@ namespace ya
 	}
 	void TitleScene::Initialize()
 	{
+		yaBgTitleScene* mTitleScene = new yaBgTitleScene();
+		AddGameObeject(mTitleScene, eLayerType::BG);
+
+		Scene::Initialize();
 	}
 	void TitleScene::Update()
 	{
@@ -19,12 +24,15 @@ namespace ya
 		{
 			SceneManager::LoadScene(eSceneType::Play);
 		}
+		Scene::Update();
 	}
 	void TitleScene::Render(HDC hdc)
 	{
+		Scene::Render(hdc);
 	}
 	void TitleScene::Release()
 	{
+		Scene::Release();
 	}
 	void TitleScene::OnEnter()
 	{

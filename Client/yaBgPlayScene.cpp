@@ -15,7 +15,7 @@ namespace ya
 
 	void yaBgPlayScene::Initialize()
 	{
-		mImage = Resources::Load<Image>(L"LoginBack", L"..\\Resources\\bg_forest.bmp");
+		mImage = Resources::Load<Image>(L"forest", L"..\\Resources\\ui_title.bmp");
 		GameObject::Initialize();
 	}
 

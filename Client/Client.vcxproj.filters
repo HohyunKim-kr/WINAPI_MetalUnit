@@ -136,6 +136,9 @@
     <ClInclude Include="yaBgPlayScene.h">
       <Filter>Contents\SceneObj</Filter>
     </ClInclude>
+    <ClInclude Include="yaBgTitleScene.h">
+      <Filter>Contents\SceneObj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -212,6 +215,9 @@
       <Filter>Engine\Component</Filter>
     </ClCompile>
     <ClCompile Include="yaBgPlayScene.cpp">
+      <Filter>Contents\SceneObj</Filter>
+    </ClCompile>
+    <ClCompile Include="yaBgTitleScene.cpp">
       <Filter>Contents\SceneObj</Filter>
     </ClCompile>
   </ItemGroup>

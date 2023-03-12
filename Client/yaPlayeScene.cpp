@@ -42,7 +42,6 @@ namespace ya
 
 	void PlayeScene::Release()
 	{
-		Scene::Release();
 	}
 	void PlayeScene::OnEnter()
 	{
