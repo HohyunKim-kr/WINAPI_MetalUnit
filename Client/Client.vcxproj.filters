@@ -53,6 +53,9 @@
     <Filter Include="Contents\SceneObj">
       <UniqueIdentifier>{0c60b30a-752f-4d0b-b7e2-89714fa92365}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Bullet">
+      <UniqueIdentifier>{d2198294-37b9-4ee2-84f6-01aad2efdadd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -139,6 +142,10 @@
     <ClInclude Include="yaBgTitleScene.h">
       <Filter>Contents\SceneObj</Filter>
     </ClInclude>
+    <ClInclude Include="yaCollider.h" />
+    <ClInclude Include="yaBaseBullet.h">
+      <Filter>Contents\Bullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -219,6 +226,10 @@
     </ClCompile>
     <ClCompile Include="yaBgTitleScene.cpp">
       <Filter>Contents\SceneObj</Filter>
+    </ClCompile>
+    <ClCompile Include="yaCollider.cpp" />
+    <ClCompile Include="yaBaseBullet.cpp">
+      <Filter>Contents\Bullet</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

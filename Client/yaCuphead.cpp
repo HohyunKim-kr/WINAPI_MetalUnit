@@ -5,6 +5,9 @@
 #include "yaResources.h"
 #include "yaTransform.h"
 #include "yaAnimator.h"
+#include "yaCollider.h"
+#include "yaBaseBullet.h"
+#include "yaScene.h"
 
 namespace ya
 {
@@ -19,13 +22,21 @@ namespace ya
 		Image*	mImage = Resources::Load<Image>(L"falcon_Idle", L"..\\Resources\\gp_Idle[5].bmp");
 		Image* mImage2 = Resources::Load<Image>(L"falcon_right", L"..\\Resources\\gp_right[8].bmp");
 		Image* mImage3 = Resources::Load<Image>(L"falcon_jump", L"..\\Resources\\gp_jump[4].bmp");
+		Image* mImage4 = Resources::Load<Image>(L"gp_unit_gun", L"..\\Resources\\gp_unit_FalconUnit_renewer_attack[3].bmp");
+
 		mAnimator = AddComponent<Animator>();
-		mAnimator->CreateAnimation(L"falcon_Idle", mImage, Vector2::Zero, 5, 1, 5, Vector2::Zero, 0.1);
-		mAnimator->CreateAnimation(L"falcon_right", mImage2, Vector2::Zero, 8, 1, 8, Vector2::Zero, 0.1);
-		mAnimator->CreateAnimation(L"falcon_jump", mImage3, Vector2::Zero, 4, 1, 4, Vector2::Zero, 0.1);
+		mAnimator->CreateAnimation(L"falcon_Idle", mImage, Vector2::Zero, 5, 1, 5, Vector2::Zero, 0.1f);
+		mAnimator->CreateAnimation(L"falcon_right", mImage2, Vector2::Zero, 8, 1, 8, Vector2::Zero, 0.1f);
+		mAnimator->CreateAnimation(L"falcon_jump", mImage3, Vector2::Zero, 4, 1, 4, Vector2::Zero, 0.1f);
+
+		mAnimator->CreateAnimation(L"gp_unit_gun", mImage4, Vector2::Zero, 4, 1, 4, Vector2::Zero, 0.1f);
+
+		// mAnimator->CreateAnimations(L"..\\Resources\\gp_unit_FalconUnit_renewer_attack[3]", Vector2::Zero, 0.1f);
 
 		mAnimator->Play(L"falcon_Idle", true);
 
+		Collider* collider = AddComponent<Collider>();
+		collider->SetCenter(Vector2(-22.0f, -50.0f));
 		mState = eCupheadState::Idle;
 
 		GameObject::Initialize();
@@ -163,6 +174,14 @@ namespace ya
 	}
 	void Cuphead::shoot()
 	{
+		Transform* tr = GetComponent<Transform>();
+		if (Input::GetKey(eKeyCode::K))
+		{
+			Scene* curScene = SceneManager::GetActiveScene();
+			BaseBullet* bullet = new BaseBullet();
+			bullet->GetComponent<Transform>()->SetPos(tr->GetPos());
+			curScene->AddGameObeject(bullet, eLayerType::Bullet);
+		}
 	}
 	void Cuphead::death()
 	{
@@ -176,6 +195,12 @@ namespace ya
 		{
 			mState = eCupheadState::Move;
 			mAnimator->Play(L"falcon_right", true);
+		}
+
+		if (Input::GetKeyDown(eKeyCode::K))
+		{
+			mState = eCupheadState::Shoot;
+			mAnimator->Play(L"gp_unit_gun", true);
 		}
 	}
 }

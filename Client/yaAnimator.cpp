@@ -99,7 +99,23 @@ namespace ya
 		mSpriteSheet = Image::Create(key, width * fileCount, height);
 
 		//
+
+		int index = 0; 
+		for (Image* image : images)
+		{
+			int centerX = (width - image->GetWidth()) / 2;
+			int centerY = (height - image->GetHeight());
+
+			BitBlt(mSpriteSheet->GetHdc()
+				, width * index + centerX
+				, 0 + centerY
+				, image->GetWidth(), image->GetHeight()
+				, image->GetHdc(), 0, 0, SRCCOPY);
+
+			index++;
+		}
 		
+		CreateAnimation(key, mSpriteSheet, Vector2::Zero, index, 1, index, offset, duration);
 	}
 
 	Animation* Animator::FindAnimation(const std::wstring& name)

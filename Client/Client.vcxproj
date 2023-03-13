@@ -134,8 +134,10 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="yaAnimation.h" />
     <ClInclude Include="yaAnimator.h" />
+    <ClInclude Include="yaBaseBullet.h" />
     <ClInclude Include="yaBgPlayScene.h" />
     <ClInclude Include="yaBgTitleScene.h" />
+    <ClInclude Include="yaCollider.h" />
     <ClInclude Include="yaResources.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="yaApplication.h" />
@@ -161,8 +163,10 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="yaAnimation.cpp" />
     <ClCompile Include="yaAnimator.cpp" />
+    <ClCompile Include="yaBaseBullet.cpp" />
     <ClCompile Include="yaBgPlayScene.cpp" />
     <ClCompile Include="yaBgTitleScene.cpp" />
+    <ClCompile Include="yaCollider.cpp" />
     <ClCompile Include="yaResources.cpp" />
     <ClCompile Include="yaApplication.cpp" />
     <ClCompile Include="yaComponent.cpp" />
