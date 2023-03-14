@@ -9,7 +9,7 @@ namespace ya
 	public:
 		Scene();
 		virtual ~Scene();
-		
+
 		virtual void Initialize();
 		virtual void Update();
 		virtual void Render(HDC hdc);
@@ -19,8 +19,7 @@ namespace ya
 		virtual void OnExit();
 
 		void AddGameObeject(GameObject* obj, eLayerType layer);
-
-		
+		const std::vector<GameObject*>& GetGameObjects(eLayerType layer);
 
 	private:
 		std::vector<Layer> mLayers;

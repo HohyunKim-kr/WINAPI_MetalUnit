@@ -56,6 +56,9 @@
     <Filter Include="Contents\Bullet">
       <UniqueIdentifier>{d2198294-37b9-4ee2-84f6-01aad2efdadd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Monster">
+      <UniqueIdentifier>{3f5ca0fd-fc7c-4900-9327-99077bfc60f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -146,6 +149,10 @@
     <ClInclude Include="yaBaseBullet.h">
       <Filter>Contents\Bullet</Filter>
     </ClInclude>
+    <ClInclude Include="yaMonster.h">
+      <Filter>Contents\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="yaCollisionManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -231,5 +238,9 @@
     <ClCompile Include="yaBaseBullet.cpp">
       <Filter>Contents\Bullet</Filter>
     </ClCompile>
+    <ClCompile Include="yaMonster.cpp">
+      <Filter>Contents\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="yaCollisionManager.cpp" />
   </ItemGroup>
 </Project>
