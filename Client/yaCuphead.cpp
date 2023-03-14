@@ -29,7 +29,7 @@ namespace ya
 		mAnimator->CreateAnimation(L"falcon_right", mImage2, Vector2::Zero, 8, 1, 8, Vector2::Zero, 0.1f);
 		mAnimator->CreateAnimation(L"falcon_jump", mImage3, Vector2::Zero, 4, 1, 4, Vector2::Zero, 0.1f);
 
-		mAnimator->CreateAnimation(L"gp_unit_gun", mImage4, Vector2::Zero, 4, 1, 4, Vector2::Zero, 0.1f);
+		mAnimator->CreateAnimation(L"gp_unit_gun", mImage4, Vector2::Zero, 3, 1, 3, Vector2::Zero, 0.1f);
 
 		// mAnimator->CreateAnimations(L"..\\Resources\\gp_unit_FalconUnit_renewer_attack[3]", Vector2::Zero, 0.1f);
 
