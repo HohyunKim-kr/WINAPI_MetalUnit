@@ -59,6 +59,9 @@
     <Filter Include="Contents\Monster">
       <UniqueIdentifier>{3f5ca0fd-fc7c-4900-9327-99077bfc60f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Component\Collider">
+      <UniqueIdentifier>{db081ad7-d43c-40f5-bb16-2605f040b3f5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -145,14 +148,18 @@
     <ClInclude Include="yaBgTitleScene.h">
       <Filter>Contents\SceneObj</Filter>
     </ClInclude>
-    <ClInclude Include="yaCollider.h" />
     <ClInclude Include="yaBaseBullet.h">
       <Filter>Contents\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="yaMonster.h">
       <Filter>Contents\Monster</Filter>
     </ClInclude>
-    <ClInclude Include="yaCollisionManager.h" />
+    <ClInclude Include="yaCollisionManager.h">
+      <Filter>Engine\Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="yaCollider.h">
+      <Filter>Engine\Component\Collider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -234,13 +241,17 @@
     <ClCompile Include="yaBgTitleScene.cpp">
       <Filter>Contents\SceneObj</Filter>
     </ClCompile>
-    <ClCompile Include="yaCollider.cpp" />
     <ClCompile Include="yaBaseBullet.cpp">
       <Filter>Contents\Bullet</Filter>
     </ClCompile>
     <ClCompile Include="yaMonster.cpp">
       <Filter>Contents\Monster</Filter>
     </ClCompile>
-    <ClCompile Include="yaCollisionManager.cpp" />
+    <ClCompile Include="yaCollider.cpp">
+      <Filter>Engine\Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="yaCollisionManager.cpp">
+      <Filter>Engine\Component\Collider</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

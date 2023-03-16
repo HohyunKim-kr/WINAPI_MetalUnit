@@ -19,6 +19,10 @@ namespace ya
 	}
 	void Cuphead::Initialize()
 	{
+
+		Transform* tr = GetComponent<Transform>();
+		tr->SetPos(Vector2(400.0f, 400.0f));
+
 		Image*	mImage = Resources::Load<Image>(L"falcon_Idle", L"..\\Resources\\gp_Idle[5].bmp");
 		Image* mImage2 = Resources::Load<Image>(L"falcon_right", L"..\\Resources\\gp_right[8].bmp");
 		Image* mImage3 = Resources::Load<Image>(L"falcon_jump", L"..\\Resources\\gp_jump[4].bmp");
@@ -36,7 +40,8 @@ namespace ya
 		mAnimator->Play(L"falcon_Idle", true);
 
 		Collider* collider = AddComponent<Collider>();
-		collider->SetCenter(Vector2(-22.0f, -50.0f));
+		collider->SetCenter(Vector2(-60.0f, -80.0f));
+		
 		mState = eCupheadState::Idle;
 
 		GameObject::Initialize();
