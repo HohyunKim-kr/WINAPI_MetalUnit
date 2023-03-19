@@ -27,7 +27,7 @@ namespace ya
 		Monster* monster = new Monster();
 		AddGameObeject(monster, eLayerType::Monster);
 
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
+		//CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
 
 		Scene::Initialize();
 	}

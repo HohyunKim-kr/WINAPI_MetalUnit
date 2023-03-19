@@ -9,7 +9,7 @@ namespace ya
 		, mSpriteSheet(nullptr)
 		, mbLoop(false)
 	{
-		
+
 	}
 	Animator::~Animator()
 	{
@@ -17,6 +17,11 @@ namespace ya
 		{
 			delete animation.second;
 			animation.second = nullptr;
+		}
+		for (auto events : mEvents)
+		{
+			delete events.second;
+			events.second = nullptr;
 		}
 	}
 	void Animator::Initialize()
@@ -35,7 +40,7 @@ namespace ya
 
 				if (events != nullptr)
 					events->mCompleteEvent();
-				
+
 				mActiveAnimation->Reset();
 			}
 		}
@@ -59,7 +64,7 @@ namespace ya
 
 		if (animation != nullptr)
 			return;
-			
+
 		animation = new Animation();
 		animation->Create(sheet, leftTop, coulmn, row, spriteLength, offset, duration);
 		animation->SetName(name);
@@ -69,7 +74,7 @@ namespace ya
 		Events* event = new Events();
 		mEvents.insert(std::make_pair(name, event));
 	}
-	
+
 	void Animator::CreateAnimations(const std::wstring& path, Vector2 offset, float duration)
 	{
 		UINT width = 0;
@@ -83,11 +88,11 @@ namespace ya
 		{
 			std::wstring fileName = p.path().filename();
 			std::wstring fullName = path + L"\\" + fileName;
-			
+
 			const std::wstring ext = p.path().extension();
 			if (ext == L".png")
 				continue;
-			
+
 			Image* image = Resources::Load<Image>(fileName, fullName);
 			images.push_back(image);
 
@@ -107,8 +112,7 @@ namespace ya
 		mSpriteSheet = Image::Create(key, width * fileCount, height);
 
 		//
-
-		int index = 0; 
+		int index = 0;
 		for (Image* image : images)
 		{
 			int centerX = (width - image->GetWidth()) / 2;
@@ -122,7 +126,7 @@ namespace ya
 
 			index++;
 		}
-		
+
 		CreateAnimation(key, mSpriteSheet, Vector2::Zero, index, 1, index, offset, duration);
 	}
 
@@ -138,21 +142,25 @@ namespace ya
 	}
 	void Animator::Play(const std::wstring& name, bool loop)
 	{
-		Animator::Events* prevEvents
-			= FindEvents(mActiveAnimation->GetName());
+		if (mActiveAnimation != nullptr)
+		{
+			Animator::Events* prevEvents
+				= FindEvents(mActiveAnimation->GetName());
 
-		if (prevEvents != nullptr)
-			prevEvents->mEndEvent();
+			if (prevEvents != nullptr)
+				prevEvents->mEndEvent();
+		}
 
 		mActiveAnimation = FindAnimation(name);
-		mbLoop = loop;
 		mActiveAnimation->Reset();
+		mbLoop = loop;
 
 		Animator::Events* events
 			= FindEvents(mActiveAnimation->GetName());
 
 		if (events != nullptr)
 			events->mStartEvent();
+
 	}
 	Animator::Events* Animator::FindEvents(const std::wstring& name)
 	{
@@ -164,31 +172,31 @@ namespace ya
 
 		return iter->second;
 	}
-	std::function<void>& Animator::GetStartEvent(const std::wstring& name)
+	std::function<void()>& Animator::GetStartEvent(const std::wstring& name)
 	{
-		Animator::Events* events
-			= FindEvents(mActiveAnimation->GetName());
+		Animation* animation = FindAnimation(name);
 
-		if (events != nullptr)
-			events->mStartEvent();
+		Animator::Events* events
+			= FindEvents(animation->GetName());
+
+		return events->mStartEvent.mEvent;
 	}
-	std::function<void>& Animator::GetCompleteEvent(const std::wstring& name)
+	std::function<void()>& Animator::GetCompleteEvent(const std::wstring& name)
 	{
+		Animation* animation = FindAnimation(name);
+
 		Animator::Events* events
-			= FindEvents(mActiveAnimation->GetName());
+			= FindEvents(animation->GetName());
 
-		// if (events != nullptr)
-		// 	return events->mCompleteEvent.mEvent;
-
-		if (events != nullptr)
-			events->mEndEvent();
+		return events->mCompleteEvent.mEvent;
 	}
-	std::function<void>& Animator::GetEndEvent(const std::wstring& name)
+	std::function<void()>& Animator::GetEndEvent(const std::wstring& name)
 	{
-		Animator::Events* events
-			= FindEvents(mActiveAnimation->GetName());
+		Animation* animation = FindAnimation(name);
 
-		if (events != nullptr)
-			events->mEndEvent();
+		Animator::Events* events
+			= FindEvents(animation->GetName());
+
+		return events->mEndEvent.mEvent;
 	}
 }
