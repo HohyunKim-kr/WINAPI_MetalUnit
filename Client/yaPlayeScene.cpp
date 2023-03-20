@@ -5,6 +5,7 @@
 #include "yaSceneManager.h"
 #include "yaMonster.h"
 #include "yaCollisionManager.h"
+#include "yaTransform.h"
 
 namespace ya
 {
@@ -27,9 +28,12 @@ namespace ya
 		Monster* monster = new Monster();
 		AddGameObeject(monster, eLayerType::Monster);
 
-		//CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
+		monster = new Monster();
+		AddGameObeject(monster, eLayerType::Monster);
 
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
 		Scene::Initialize();
+		monster->GetComponent<Transform>()->SetPos(Vector2(300.0f, 500.0f));
 	}
 
 	void PlayeScene::Update()

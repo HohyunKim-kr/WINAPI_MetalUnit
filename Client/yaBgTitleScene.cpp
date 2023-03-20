@@ -13,7 +13,7 @@ namespace ya
 	}
 	void yaBgTitleScene::Initialize()
 	{
-		mImage = Resources::Load<Image>(L"forest", L"..\\Resources\\bg_forest.bmp");
+		mImage = Resources::Load<Image>(L"title", L"..\\Resources\\bg_forest.bmp");
 		GameObject::Initialize();
 	}
 	void yaBgTitleScene::Update()

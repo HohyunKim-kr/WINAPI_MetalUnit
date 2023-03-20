@@ -15,8 +15,8 @@ namespace ya
 	{
 		yaBgTitleScene* mTitleScene = new yaBgTitleScene();
 		AddGameObeject(mTitleScene, eLayerType::BG);
-
 		Scene::Initialize();
+
 	}
 	void TitleScene::Update()
 	{
