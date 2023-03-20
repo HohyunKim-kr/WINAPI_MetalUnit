@@ -15,9 +15,9 @@ namespace ya
 		virtual void Render(HDC hdc);
 		virtual void Release();
 
-		//virtual void OnCollisionEnter(Collider* other);
-		//virtual void OnCollisionStay(Collider* other);
-		//virtual void OnCollisionExit(Collider* other);
+		virtual void OnCollisionEnter(class Collider* other);
+		virtual void OnCollisionStay(class Collider* other);
+		virtual void OnCollisionExit(class Collider* other);
 
 		template <typename T>
 		T* AddComponent()

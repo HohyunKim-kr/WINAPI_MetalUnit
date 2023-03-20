@@ -4,12 +4,13 @@
 
 namespace ya
 {
+	UINT Collider::ColliderNumber = 0;
 	Collider::Collider()
 		: Component(eComponentType::Collider)
 		, mCenter(Vector2::Zero)
 		, mPos(Vector2::Zero)
 		, mSize(100.0f, 100.0f)
-
+		,mID(ColliderNumber++)
 	{
 
 	}
@@ -41,5 +42,17 @@ namespace ya
 	}
 	void Collider::Release()
 	{
+	}
+	void Collider::OnCollisionEnter(Collider* other)
+	{
+		GetOwner()->OnCollisionEnter(other);
+	}
+	void Collider::OnCollisionStay(Collider* other)
+	{
+		GetOwner()->OnCollisionStay(other);
+	}
+	void Collider::OnCollisionExit(Collider* other)
+	{
+		GetOwner()->OnCollisionExit(other);
 	}
 }

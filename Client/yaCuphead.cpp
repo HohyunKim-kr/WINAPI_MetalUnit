@@ -149,6 +149,18 @@ namespace ya
 		GameObject::Release();
 
 	}
+	void Cuphead::OnCollisionEnter(Collider* other)
+	{
+
+	}
+	void Cuphead::OnCollisionStay(Collider* other)
+	{
+
+	}
+	void Cuphead::OnCollisionExit(Collider* other)
+	{
+
+	}
 	void Cuphead::move()
 	{
 		if (Input::GetKeyUp(eKeyCode::A)

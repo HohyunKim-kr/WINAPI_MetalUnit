@@ -16,8 +16,18 @@ namespace ya
 	void BaseBullet::Update()
 	{
 		Transform* tr = GetComponent<Transform>();
+		Vector2 dir = Vector2(500.0f, 500.0f) - tr->GetPos();
+		dir.Normalize();
+		//float x = cosf(-PI / 4.0f);
+		//float y = sinf(-PI / 4.0f);
+		//float x = dir.x * cosf(PI / 4.0f) - dir.y * sinf(PI / 4.0f);
+		//float y = dir.x * sinf(PI / 4.0f) + dir.y * cosf(PI / 4.0f);
+
+
 		Vector2 pos = tr->GetPos();
-		pos.x += 100.0f * Time::DeltaTime();
+		pos.x += 100.0f * dir.x * Time::DeltaTime();
+		pos.y += 100.0f * dir.y * Time::DeltaTime();
+
 		tr->SetPos(pos);
 
 	}
