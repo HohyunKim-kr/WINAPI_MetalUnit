@@ -22,6 +22,7 @@ namespace ya
 
 		Transform* tr = GetComponent<Transform>();
 		tr->SetPos(Vector2(400.0f, 400.0f));
+		tr->SetScale(Vector2(2.f, 2.f));
 
 		Image*	mImage = Resources::Load<Image>(L"falcon_Idle", L"..\\Resources\\gp_Idle[5].bmp");
 		Image* mImage2 = Resources::Load<Image>(L"falcon_right", L"..\\Resources\\gp_right[8].bmp");
@@ -29,10 +30,10 @@ namespace ya
 		Image* mImage4 = Resources::Load<Image>(L"gp_unit_gun", L"..\\Resources\\gp_unit_FalconUnit_renewer_attack[3].bmp");
 
 		mAnimator = AddComponent<Animator>();
+		// mAnimator->CreateAnimation(L"IdleR", mImageR, Vector2(120.0f * 0, 120.0f * 0), 120.0f, 30, 60, 4, Vector2::Zero, 0.15);
 		mAnimator->CreateAnimation(L"falcon_Idle", mImage, Vector2::Zero, 5, 1, 5, Vector2::Zero, 0.1f);
 		mAnimator->CreateAnimation(L"falcon_right", mImage2, Vector2::Zero, 8, 1, 8, Vector2::Zero, 0.1f);
 		mAnimator->CreateAnimation(L"falcon_jump", mImage3, Vector2::Zero, 4, 1, 4, Vector2::Zero, 0.1f);
-
 		mAnimator->CreateAnimation(L"gp_unit_gun", mImage4, Vector2::Zero, 3, 1, 3, Vector2::Zero, 0.1f);
 
 		// mAnimator->CreateAnimations(L"..\\Resources\\gp_unit_FalconUnit_renewer_attack[3]", Vector2::Zero, 0.1f);

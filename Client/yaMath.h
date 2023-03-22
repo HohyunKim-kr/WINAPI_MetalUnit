@@ -37,20 +37,40 @@ struct Vector2
 	Vector2(Vector2&&) = default;
 	Vector2& operator=(Vector2&&) = default;
 
-	Vector2& operator+(const Vector2& other)
+	Vector2 operator+(const Vector2& other)
 	{
-		x = x + other.x;
-		y = y + other.y;
+		Vector2 temp;
+		temp.x = x + other.x;
+		temp.y = y + other.y;
 
-		return *this;
+		return temp;
 	}
 
-	Vector2& operator-(const Vector2& other)
+	Vector2 operator-(const Vector2& other)
 	{
-		x = x - other.x;
-		y = y - other.y;
-		return *this;
+		Vector2 temp;
+		temp.x = x - other.x;
+		temp.y = y - other.y;
 
+		return temp;
+	}
+
+	Vector2 operator*(const Vector2& other)
+	{
+		Vector2 temp;
+		temp.x = x * other.x;
+		temp.y = y * other.y;
+
+		return temp;
+	}
+
+	Vector2 operator/(const float ratio)
+	{
+		Vector2 temp;
+		temp.x = x / ratio;
+		temp.y = y / ratio;
+
+		return temp;
 	}
 
 	void operator+=(const Vector2& other)
@@ -82,19 +102,21 @@ struct Vector2
 
 namespace ya::math
 {
-	//float x = dir.x * cosf(PI / 4.0f) - dir.y * sinf(PI / 4.0f);
-	//float y = dir.x * sinf(PI / 4.0f) + dir.y * cosf(PI / 4.0f);
+	//float x = dir.x * cosf(PI / 5.0f) - dir.y * sinf(PI / 5.0f);
+	//float y = dir.x * sinf(PI / 5.0f) + dir.y * cosf(PI / 5.0f);
 
-	inline Vector2 Roatate(Vector2 vector, float degree)
+	inline static Vector2 Rotate(Vector2 vector, float degree)
 	{
 		float radian = (degree / 180.0f) * PI;
 		vector.Normalize();
 
 		float x = vector.x * cosf(radian) - vector.y * sinf(radian);
 		float y = vector.x * sinf(radian) + vector.y * cosf(radian);
-
-		// atan();
-
+		//atan
+		//atan();
 		return Vector2(x, y);
 	}
+
+
 }
+
