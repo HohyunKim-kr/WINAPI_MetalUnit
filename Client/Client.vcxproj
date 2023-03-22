@@ -138,6 +138,7 @@
     <ClInclude Include="yaBaseBullet.h" />
     <ClInclude Include="yaBgPlayScene.h" />
     <ClInclude Include="yaBgTitleScene.h" />
+    <ClInclude Include="yaCamera.h" />
     <ClInclude Include="yaCollider.h" />
     <ClInclude Include="yaCollisionManager.h" />
     <ClInclude Include="yaMonster.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="yaBaseBullet.cpp" />
     <ClCompile Include="yaBgPlayScene.cpp" />
     <ClCompile Include="yaBgTitleScene.cpp" />
+    <ClCompile Include="yaCamera.cpp" />
     <ClCompile Include="yaCollider.cpp" />
     <ClCompile Include="yaCollisionManager.cpp" />
     <ClCompile Include="yaMonster.cpp" />
