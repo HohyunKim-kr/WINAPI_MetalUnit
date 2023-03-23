@@ -10,7 +10,7 @@ namespace ya
 		Z, X, C, V, B, N, M,
 
 		UP, DOWN, LEFT, RIGHT,
-		//LBUTTON, RBUTTON
+		LBUTTON, RBUTTON,
 		END,
 	};
 

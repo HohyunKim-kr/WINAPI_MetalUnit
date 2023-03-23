@@ -193,7 +193,7 @@ namespace ya
 	void Cuphead::shoot()
 	{
 		Transform* tr = GetComponent<Transform>();
-		if (Input::GetKey(eKeyCode::K))
+		if (Input::GetKey(eKeyCode::LBUTTON))
 		{
 			Scene* curScene = SceneManager::GetActiveScene();
 			BaseBullet* bullet = new BaseBullet();
@@ -215,7 +215,7 @@ namespace ya
 			mAnimator->Play(L"falcon_right", true);
 		}
 
-		if (Input::GetKeyDown(eKeyCode::K))
+		if (Input::GetKeyDown(eKeyCode::LBUTTON))
 		{
 			mState = eCupheadState::Shoot;
 			mAnimator->Play(L"gp_unit_gun", true);
