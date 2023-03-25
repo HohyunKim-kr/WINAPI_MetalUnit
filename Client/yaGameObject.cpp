@@ -4,6 +4,7 @@
 namespace ya
 {
 	GameObject::GameObject()
+		:mState(eState::Active)
 	{
 		mComponents.resize((UINT)eComponentType::End);
 		AddComponent<Transform>();
@@ -55,17 +56,13 @@ namespace ya
 	{
 
 	}
-
 	void GameObject::OnCollisionEnter(Collider* other)
 	{
 	}
-
 	void GameObject::OnCollisionStay(Collider* other)
 	{
 	}
-
 	void GameObject::OnCollisionExit(Collider* other)
 	{
 	}
-
 }

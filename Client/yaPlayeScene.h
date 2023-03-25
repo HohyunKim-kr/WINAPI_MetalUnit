@@ -20,9 +20,10 @@ namespace ya
 
 		virtual void OnEnter() override;
 		virtual void OnExit() override;
-
+		
 	private:
 		Cuphead* mCuphead;
 		yaBgPlayScene* mPlayScene;
+		
 	};
 }

@@ -21,6 +21,10 @@ namespace ya
 			if (gameObj == nullptr)
 				continue;
 
+			if (gameObj->GetState() 
+				!= GameObject::eState::Active)
+				continue;
+
 			gameObj->Initialize();
 		}
 	}
@@ -31,6 +35,10 @@ namespace ya
 			if (gameObj == nullptr)
 				continue;
 
+			if (gameObj->GetState()
+				!= GameObject::eState::Active)
+				continue;
+
 			gameObj->Update();
 		}
 	}
@@ -39,6 +47,10 @@ namespace ya
 		for (GameObject* gameObj : mGameObjects)
 		{
 			if (gameObj == nullptr)
+				continue;
+
+			if (gameObj->GetState()
+				!= GameObject::eState::Active)
 				continue;
 
 			gameObj->Render(hdc);

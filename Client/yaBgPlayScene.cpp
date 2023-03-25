@@ -1,7 +1,9 @@
 #include "yaBgPlayScene.h"
+#include "yaResources.h"
 #include "yaSceneManager.h"
 #include "yaTransform.h"
-#include "yaResources.h"
+#include "yaCamera.h"
+#include "yaImage.h"
 
 namespace ya
 {
@@ -23,17 +25,26 @@ namespace ya
 	{
 		GameObject::Update();
 
-		Transform* tr = GetComponent<Transform>();
-		Vector2 pos = tr->GetPos();
-		tr->SetPos(pos);
+		// Transform* tr = GetComponent<Transform>();
+		// Vector2 pos = tr->GetPos();
+		// tr->SetPos(pos);
 	}
 
 	void yaBgPlayScene::Render(HDC hdc)
 	{
-		GameObject::Render(hdc);
 		Transform* tr = GetComponent<Transform>();
 		Vector2 pos = tr->GetPos();
-		BitBlt(hdc, pos.x, pos.y, mImage->GetWidth(), mImage->GetHeight(), mImage->GetHdc(), 0, 0, SRCCOPY); 
+		pos = Camera::CalcuatePos(pos);
+
+		GameObject::Render(hdc);
+		/*BitBlt(hdc, 0, 0, mapImage->GetWidth(), mapImage->GetHeight(), mapImage->GetHdc(), 0, 0, SRCCOPY);*/
+		StretchBlt(hdc, pos.x, pos.y, 1600, 900, mImage->GetHdc()
+			, 0, 0, mImage->GetWidth(), mImage->GetHeight(), SRCCOPY);
+
+		// GameObject::Render(hdc);
+		// Transform* tr = GetComponent<Transform>();
+		// Vector2 pos = tr->GetPos();
+		// BitBlt(hdc, pos.x, pos.y, mImage->GetWidth(), mImage->GetHeight(), mImage->GetHdc(), 0, 0, SRCCOPY); 
 	}
 
 	void yaBgPlayScene::Release()

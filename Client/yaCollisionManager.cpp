@@ -25,8 +25,8 @@ namespace ya
 
 	void CollisionManager::LayerCollision(Scene* scene, eLayerType left, eLayerType right)
 	{
-		const std::vector<GameObject*>& lefts = scene->GetGameObjects(left);
-		const std::vector<GameObject*>& rights = scene->GetGameObjects(right);
+		std::vector<GameObject*>& lefts = scene->GetGameObjects(left);
+		std::vector<GameObject*>& rights = scene->GetGameObjects(right);
 
 		for (auto leftObject : lefts)
 		{

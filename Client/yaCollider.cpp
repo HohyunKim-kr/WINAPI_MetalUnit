@@ -35,7 +35,7 @@ namespace ya
 		HBRUSH brush = (HBRUSH)GetStockObject(NULL_BRUSH);
 		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, brush);
 
-		Vector2 pos = Camera::CaluatePos(mPos);
+		Vector2 pos = Camera::CalcuatePos(mPos);
 		Rectangle(hdc, pos.x, pos.y, pos.x + mSize.x, pos.y + mSize.y);
 
 		(HPEN)SelectObject(hdc, oldPen);

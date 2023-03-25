@@ -15,6 +15,6 @@ namespace ya
 		virtual void Release() override;
 
 	private:
-
+		float mTime;
 	};
 }

@@ -7,6 +7,7 @@
 #include "yaCollisionManager.h"
 #include "yaTransform.h"
 #include "yaCamera.h"
+#include "yaObject.h"
 
 namespace ya
 {
@@ -20,23 +21,28 @@ namespace ya
 
 	void PlayeScene::Initialize()
 	{
-		mPlayScene = new yaBgPlayScene();
-		AddGameObeject(mPlayScene, eLayerType::BG);
+		// mPlayScene = new yaBgPlayScene();
+		// AddGameObeject(mPlayScene, eLayerType::BG);
 
-		mCuphead = new Cuphead();
-		AddGameObeject(mCuphead, eLayerType::Player);
+		// mCuphead = new Cuphead();
+		// AddGameObeject(mCuphead, eLayerType::Player);
 
-		Camera::SetTarget(mCuphead);
-
-		Monster* monster = new Monster();
-		AddGameObeject(monster, eLayerType::Monster);
-
-		monster = new Monster();
-		AddGameObeject(monster, eLayerType::Monster);
+		// Camera::SetTarget(mCuphead);
+		object::Instantiate<yaBgPlayScene>(Vector2(0.0f, 0.0f), eLayerType::BG);
+		mCuphead = object::Instantiate<Cuphead>(Vector2(400.0f, 400.0f), eLayerType::Player);
+		object::Instantiate<Monster>(Vector2(500.0f, 500.0f), eLayerType::Monster);
+		// object::Instantiate<Monster>(Vector2(500.0f, 500.0f), eLayerType::Monster);
 
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
-		Scene::Initialize();
-		monster->GetComponent<Transform>()->SetPos(Vector2(300.0f, 500.0f));
+		// Monster* monster = new Monster();
+		// AddGameObeject(monster, eLayerType::Monster);
+		// 
+		// monster = new Monster();
+		// AddGameObeject(monster, eLayerType::Monster);
+
+		// CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
+		// Scene::Initialize();
+		// monster->GetComponent<Transform>()->SetPos(Vector2(300.0f, 500.0f));
 	}
 
 	void PlayeScene::Update()
@@ -57,12 +63,19 @@ namespace ya
 
 	void PlayeScene::Release()
 	{
+		Scene::Release();
 	}
 	void PlayeScene::OnEnter()
 	{
+		Camera::SetTarget(mCuphead);
+
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
 	}
 	void PlayeScene::OnExit()
 	{
 		//mCuphead->SetPos(Vector2{ 0.0f, 0.0f });
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, false);
+		Camera::SetTarget(nullptr);
+
 	}
 }

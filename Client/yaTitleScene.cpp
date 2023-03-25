@@ -2,6 +2,12 @@
 #include "yaInput.h"
 #include "yaSceneManager.h"
 #include "yaBgTitleScene.h"
+#include "yaCuphead.h"
+#include "yaMonster.h"
+#include "yaCollisionManager.h"
+#include "yaTransform.h"
+#include "yaCamera.h"
+#include "yaObject.h"
 
 namespace ya
 {
@@ -13,9 +19,11 @@ namespace ya
 	}
 	void TitleScene::Initialize()
 	{
-		yaBgTitleScene* mTitleScene = new yaBgTitleScene();
-		AddGameObeject(mTitleScene, eLayerType::BG);
 		Scene::Initialize();
+		object::Instantiate<yaBgTitleScene>(Vector2::Zero, eLayerType::BG);
+		// yaBgTitleScene* mTitleScene = new yaBgTitleScene();
+		// AddGameObeject(mTitleScene, eLayerType::BG);
+		
 
 	}
 	void TitleScene::Update()
