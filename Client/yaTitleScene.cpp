@@ -23,16 +23,14 @@ namespace ya
 		object::Instantiate<yaBgTitleScene>(Vector2::Zero, eLayerType::BG);
 		// yaBgTitleScene* mTitleScene = new yaBgTitleScene();
 		// AddGameObeject(mTitleScene, eLayerType::BG);
-		
-
 	}
 	void TitleScene::Update()
 	{
+		Scene::Update();
 		if (Input::GetKeyState(eKeyCode::N) == eKeyState::Down)
 		{
 			SceneManager::LoadScene(eSceneType::Play);
 		}
-		Scene::Update();
 	}
 	void TitleScene::Render(HDC hdc)
 	{
@@ -44,6 +42,7 @@ namespace ya
 	}
 	void TitleScene::OnEnter()
 	{
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
 	}
 	void TitleScene::OnExit()
 	{

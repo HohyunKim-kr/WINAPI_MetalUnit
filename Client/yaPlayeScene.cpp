@@ -33,26 +33,23 @@ namespace ya
 		object::Instantiate<Monster>(Vector2(500.0f, 500.0f), eLayerType::Monster);
 		// object::Instantiate<Monster>(Vector2(500.0f, 500.0f), eLayerType::Monster);
 
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
 		// Monster* monster = new Monster();
 		// AddGameObeject(monster, eLayerType::Monster);
 		// 
 		// monster = new Monster();
 		// AddGameObeject(monster, eLayerType::Monster);
-
-		// CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
-		// Scene::Initialize();
+		Scene::Initialize();
 		// monster->GetComponent<Transform>()->SetPos(Vector2(300.0f, 500.0f));
 	}
 
 	void PlayeScene::Update()
 	{
+		Scene::Update();
 		if (Input::GetKeyState(eKeyCode::N) == eKeyState::Down)
 		{
 			SceneManager::LoadScene(eSceneType::Title);
 		}
 
-		Scene::Update();
 	}
 
 	void PlayeScene::Render(HDC hdc)
@@ -67,7 +64,7 @@ namespace ya
 	}
 	void PlayeScene::OnEnter()
 	{
-		Camera::SetTarget(mCuphead);
+		// Camera::SetTarget(mCuphead);
 
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
 	}

@@ -43,7 +43,8 @@ namespace ya
 
 		Collider* collider = AddComponent<Collider>();
 		collider->SetCenter(Vector2(-60.0f, -80.0f));
-		
+		collider->SetSize(Vector2(100.0f, 100.0f));
+
 		mState = eCupheadState::Idle;
 
 		GameObject::Initialize();
