@@ -24,7 +24,7 @@ namespace ya
 		Vector2 GetPos() { return mPos; }
 		Vector2 GetSize() { return mSize; }
 		UINT GetID() { return  mID; }
-
+		void ClearCollisionCount() { mCollisionCount = 0; }
 
 	private:
 		static UINT ColliderNumber;

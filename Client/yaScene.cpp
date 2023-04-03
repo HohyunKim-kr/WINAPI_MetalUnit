@@ -58,7 +58,9 @@ namespace ya
 				}
 			}
 		}
-		
+		// 죽은 위치에서 충돌중인 다른 충돌체가 있었다면 Exit를 
+		// 호출 해준후에 삭제 해주어야 한다.
+
 		for (GameObject* deathObj : deleteGameObject)
 		{
 			delete deathObj;

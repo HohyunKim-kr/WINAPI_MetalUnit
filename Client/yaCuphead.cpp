@@ -183,20 +183,20 @@ namespace ya
 		Vector2 pos = tr->GetPos();
 
 		if (Input::GetKey(eKeyCode::A))
-			//mRigidbody->AddForce(Vector2(-200.0f, 0.0f));
-			pos.x -= 100.0f * Time::DeltaTime();
+			mRigidbody->AddForce(Vector2(-200.0f, 0.0f));
+			//pos.x -= 100.0f * Time::DeltaTime();
 
 		if (Input::GetKey(eKeyCode::D))
-			//mRigidbody->AddForce(Vector2(200.0f, 0.0f));
-			pos.x += 100.0f * Time::DeltaTime();
+			mRigidbody->AddForce(Vector2(200.0f, 0.0f));
+			//pos.x += 100.0f * Time::DeltaTime();
 
 		if (Input::GetKey(eKeyCode::W))
-			//mRigidbody->AddForce(Vector2(0.0f, -200.0f));
-			pos.y -= 100.0f * Time::DeltaTime();
+			mRigidbody->AddForce(Vector2(0.0f, -200.0f));
+			//pos.y -= 100.0f * Time::DeltaTime();
 
 		if (Input::GetKey(eKeyCode::S))
-			//mRigidbody->AddForce(Vector2(0.0f, 200.0f));
-			pos.y += 100.0f * Time::DeltaTime();
+			mRigidbody->AddForce(Vector2(0.0f, 200.0f));
+			//pos.y += 100.0f * Time::DeltaTime();
 
 		tr->SetPos(pos);
 	}
