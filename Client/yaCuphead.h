@@ -4,6 +4,7 @@
 
 namespace ya
 {
+	class Rigidbody;
 	class Animator;
 	class Cuphead : public GameObject
 	{
@@ -37,5 +38,6 @@ namespace ya
 	private:
 		eCupheadState mState;
 		Animator* mAnimator;
+		Rigidbody* mRigidbody;
 	};
 }

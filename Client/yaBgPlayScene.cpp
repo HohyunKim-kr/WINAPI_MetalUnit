@@ -8,6 +8,7 @@
 namespace ya
 {
 	yaBgPlayScene::yaBgPlayScene()
+		: mImage(nullptr)
 	{
 	}
 
@@ -17,7 +18,7 @@ namespace ya
 
 	void yaBgPlayScene::Initialize()
 	{
-		mImage = Resources::Load<Image>(L"forest", L"..\\Resources\\ui_title.bmp");
+		mImage = Resources::Load<Image>(L"forest", L"..\\Resources\\bg_forest.bmp");
 		GameObject::Initialize();
 	}
 
@@ -36,10 +37,13 @@ namespace ya
 		Vector2 pos = tr->GetPos();
 		pos = Camera::CalcuatePos(pos);
 
-		GameObject::Render(hdc);
+		
 		/*BitBlt(hdc, 0, 0, mapImage->GetWidth(), mapImage->GetHeight(), mapImage->GetHdc(), 0, 0, SRCCOPY);*/
-		StretchBlt(hdc, pos.x, pos.y, 1600, 900, mImage->GetHdc()
+		TransparentBlt(hdc, pos.x, pos.y, 1600, 900, mImage->GetHdc()
 			, 0, 0, mImage->GetWidth(), mImage->GetHeight(), SRCCOPY);
+		GameObject::Render(hdc);
+		//StretchBlt(hdc, pos.x, pos.y, 1600, 900, mImage->GetHdc()
+		//	, 0, 0, mImage->GetWidth(), mImage->GetHeight(), SRCCOPY);
 
 		// GameObject::Render(hdc);
 		// Transform* tr = GetComponent<Transform>();

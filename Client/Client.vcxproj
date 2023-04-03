@@ -158,6 +158,7 @@
     <ClInclude Include="YamYamEngine.h" />
     <ClInclude Include="yaPlayeScene.h" />
     <ClInclude Include="yaResource.h" />
+    <ClInclude Include="yaRigidbody.h" />
     <ClInclude Include="yaScene.h" />
     <ClInclude Include="yaSceneManager.h" />
     <ClInclude Include="yaTime.h" />
@@ -187,6 +188,7 @@
     <ClCompile Include="yaMath.cpp" />
     <ClCompile Include="yaPlayeScene.cpp" />
     <ClCompile Include="yaResource.cpp" />
+    <ClCompile Include="yaRigidbody.cpp" />
     <ClCompile Include="yaScene.cpp" />
     <ClCompile Include="yaSceneManager.cpp" />
     <ClCompile Include="yaTime.cpp" />

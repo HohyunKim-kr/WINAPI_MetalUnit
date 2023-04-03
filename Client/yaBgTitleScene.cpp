@@ -7,6 +7,7 @@
 namespace ya
 {
 	yaBgTitleScene::yaBgTitleScene()
+		: mImage(nullptr)
 	{
 	}
 	yaBgTitleScene::~yaBgTitleScene()
@@ -14,7 +15,7 @@ namespace ya
 	}
 	void yaBgTitleScene::Initialize()
 	{
-		mImage = Resources::Load<Image>(L"title", L"..\\Resources\\bg_forest.bmp");
+		mImage = Resources::Load<Image>(L"title", L"..\\Resources\\ui_title.bmp");
 		GameObject::Initialize();
 	}
 	void yaBgTitleScene::Update()

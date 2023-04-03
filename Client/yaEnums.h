@@ -3,10 +3,8 @@
 
 enum class eSceneType
 {
-	Play,
 	Title,
-	Boss_Stage1,
-	Boss_Stage2,
+	Play,
 	Ending,
 	End,
 };
@@ -20,15 +18,16 @@ enum class eLayerType
 	Test,
 	Effect,
 	UI,
-	End,
+	End = 16,
 };
 
 enum class eComponentType
 {
 	Transform,
-	Collider,
 	SpriteRenderer,
 	Animator,
+	Collider,
+	Rigidbody,
 	Audio,
 	End,
 };

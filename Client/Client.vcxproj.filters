@@ -65,6 +65,15 @@
     <Filter Include="Engine\Camera">
       <UniqueIdentifier>{887540ad-fc4d-46d6-b8ff-edbc660340bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Component\Animator">
+      <UniqueIdentifier>{200ac8ba-eec9-47ab-8af7-673882609402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\RigidBody">
+      <UniqueIdentifier>{682f2617-4e6b-432e-9d56-f5af60d37810}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Component\Transform">
+      <UniqueIdentifier>{77a834d3-cd0a-405d-842f-9a5b916e8cab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -106,9 +115,6 @@
     <ClInclude Include="yaSceneManager.h">
       <Filter>Engine\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="yaComponent.h">
-      <Filter>Engine\Component</Filter>
-    </ClInclude>
     <ClInclude Include="yaLayer.h">
       <Filter>Engine\Layer</Filter>
     </ClInclude>
@@ -136,15 +142,6 @@
     <ClInclude Include="yaTitleScene.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="yaTransform.h">
-      <Filter>Engine\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="yaAnimator.h">
-      <Filter>Engine\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="yaAnimation.h">
-      <Filter>Engine\Component</Filter>
-    </ClInclude>
     <ClInclude Include="yaBgPlayScene.h">
       <Filter>Contents\SceneObj</Filter>
     </ClInclude>
@@ -168,6 +165,21 @@
     </ClInclude>
     <ClInclude Include="yaObject.h">
       <Filter>Engine\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="yaAnimation.h">
+      <Filter>Engine\Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="yaAnimator.h">
+      <Filter>Engine\Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="yaTransform.h">
+      <Filter>Engine\Component\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="yaComponent.h">
+      <Filter>Engine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="yaRigidbody.h">
+      <Filter>Engine\Component\RigidBody</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -205,9 +217,6 @@
     <ClCompile Include="yaSceneManager.cpp">
       <Filter>Engine\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="yaComponent.cpp">
-      <Filter>Engine\Component</Filter>
-    </ClCompile>
     <ClCompile Include="yaLayer.cpp">
       <Filter>Engine\Layer</Filter>
     </ClCompile>
@@ -235,15 +244,6 @@
     <ClCompile Include="yaTitleScene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="yaTransform.cpp">
-      <Filter>Engine\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="yaAnimation.cpp">
-      <Filter>Engine\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="yaAnimator.cpp">
-      <Filter>Engine\Component</Filter>
-    </ClCompile>
     <ClCompile Include="yaBgPlayScene.cpp">
       <Filter>Contents\SceneObj</Filter>
     </ClCompile>
@@ -264,6 +264,21 @@
     </ClCompile>
     <ClCompile Include="yaCamera.cpp">
       <Filter>Engine\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="yaAnimation.cpp">
+      <Filter>Engine\Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="yaAnimator.cpp">
+      <Filter>Engine\Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="yaTransform.cpp">
+      <Filter>Engine\Component\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="yaComponent.cpp">
+      <Filter>Engine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="yaRigidbody.cpp">
+      <Filter>Engine\Component\RigidBody</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
