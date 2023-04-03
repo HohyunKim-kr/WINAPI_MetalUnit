@@ -3,8 +3,8 @@
 
 enum class eSceneType
 {
-	Title,
 	Play,
+	Title,
 	Ending,
 	End,
 };

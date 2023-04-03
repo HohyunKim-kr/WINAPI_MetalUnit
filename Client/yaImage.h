@@ -6,12 +6,13 @@ namespace ya
 	class Image : public Resource
 	{
 	public:
-		static Image* Create(const std::wstring& name, UINT widht, UINT height);
+		static Image* Create(const std::wstring& name, UINT widht, UINT height, COLORREF rgb = RGB(255, 255 ,255));
 
 		Image();
 		~Image();
 
 		virtual HRESULT Load(const std::wstring& path) override;
+		// void SetColor(UCHAR r, UCHAR g, UCHAR b);
 
 		HDC GetHdc() { return mHdc; }
 		HBITMAP GetBitmap() { return mBitmap; }

@@ -6,7 +6,7 @@ extern ya::Application application;
 
 namespace ya
 {
-	Image* Image::Create(const std::wstring& name, UINT widht, UINT height)
+	Image* Image::Create(const std::wstring& name, UINT widht, UINT height, COLORREF rgb)
 	{
 		if (widht == 0 || height == 0)
 			return nullptr;
@@ -31,8 +31,12 @@ namespace ya
 		image->SetKey(name);
 		Resources::Insert<Image>(name, image);
 
+		// Setting Image Color
+		HBRUSH brush = CreateSolidBrush(rgb);
+		HBRUSH oldBrush = (HBRUSH)SelectObject(image->GetHdc(), brush);
 		Rectangle(image->GetHdc(), -1, -1, image->mWidth + 1, image->mHeight + 1);
-
+		SelectObject(image->GetHdc(), oldBrush);
+		DeleteObject(oldBrush);
 		// BitBlt(image->GetHdc(), 0, 0, image->mWidth, image->mHeight);
 
 		return image;
