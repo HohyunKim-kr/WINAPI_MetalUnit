@@ -43,6 +43,7 @@ namespace ya
 	void TitleScene::OnEnter()
 	{
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
 	}
 	void TitleScene::OnExit()
 	{

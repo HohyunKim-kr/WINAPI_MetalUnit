@@ -22,9 +22,9 @@ namespace ya
 	void Cuphead::Initialize()
 	{
 
-		// Transform* tr = GetComponent<Transform>();
-		// tr->SetPos(Vector2(400.0f, 400.0f));
-		// tr->SetScale(Vector2(2.f, 2.f));
+		Transform* tr = GetComponent<Transform>();
+		tr->SetPos(Vector2(400.0f, 400.0f));
+		tr->SetScale(Vector2(2.f, 2.f));
 
 		Image*	mImage = Resources::Load<Image>(L"falcon_Idle", L"..\\Resources\\gp_Idle[5].bmp");
 		Image* mImage2 = Resources::Load<Image>(L"falcon_right", L"..\\Resources\\gp_right[8].bmp");
@@ -43,8 +43,8 @@ namespace ya
 		mAnimator->Play(L"falcon_Idle", true);
 
 		Collider* collider = AddComponent<Collider>();
-		collider->SetCenter(Vector2(-60.0f, -80.0f));
-		collider->SetSize(Vector2(100.0f, 100.0f));
+		collider->SetCenter(Vector2(-20.0f, -50.0f));
+		collider->SetSize(Vector2(80.0f, 95.0f));
 
 		mRigidbody = AddComponent<Rigidbody>();
 		mRigidbody->SetMass(1.0f);
@@ -215,6 +215,7 @@ namespace ya
 	void Cuphead::death()
 	{
 	}
+	
 	void Cuphead::idle()
 	{
 		if (Input::GetKeyDown(eKeyCode::A)
@@ -226,10 +227,30 @@ namespace ya
 			mAnimator->Play(L"falcon_right", true);
 		}
 
+		if (Input::GetKeyDown(eKeyCode::SPACE))
+		{
+			Vector2 velocity = mRigidbody->GetVelocity();
+			velocity.y -= 500.0f;
+
+			mRigidbody->SetVelocity(velocity);
+			mRigidbody->SetGround(false);
+		}
+
 		if (Input::GetKeyDown(eKeyCode::LBUTTON))
 		{
 			mState = eCupheadState::Shoot;
 			mAnimator->Play(L"gp_unit_gun", true);
 		}
+	}
+
+	void Cuphead::idleCompleteEvent(/*const Cuphead* this*/)
+	{
+		int a = 0;
+		//mState =
+		//Transform* tr = GetComponent<Transform>();
+		//Scene* curScene = SceneManager::GetActiveScene();
+		//BaseBullet* bullet = new BaseBullet();
+		//bullet->GetComponent<Transform>()->SetPos(tr->GetPos());
+		//curScene->AddGameObeject(bullet, eLayerType::Bullet);
 	}
 }

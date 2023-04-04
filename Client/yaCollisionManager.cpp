@@ -18,7 +18,6 @@ namespace ya
 				{
 					LayerCollision(scene, (eLayerType)row, (eLayerType)col);
 				}
-
 			}
 		}
 	}
@@ -44,10 +43,8 @@ namespace ya
 					continue;
 
 				ColliderCollision(leftCollider, rightCollider, left, right);
-				
 			}
 		}
-
 	}
 
 	void CollisionManager::ColliderCollision(Collider* leftCol, Collider* rightCol, eLayerType left, eLayerType right)
@@ -56,11 +53,10 @@ namespace ya
 		colliderID.left = (UINT)leftCol->GetID();
 		colliderID.right = (UINT)rightCol->GetID();
 
-		// static std::map<UINT64, bool> mCollisionMap;
-
-		static std::map<UINT64, bool>::iterator iter
+		//static std::map<UINT64, bool> mCollisionMap;
+		std::map<UINT64, bool>::iterator iter
 			= mCollisionMap.find(colliderID.id);
-		
+
 		if (iter == mCollisionMap.end())
 		{
 			mCollisionMap.insert(std::make_pair(colliderID.id, false));
@@ -77,7 +73,7 @@ namespace ya
 
 				iter->second = true;
 			}
-			else // 충돌 중인 상태 stay
+			else // 충돌 중인상태 stay
 			{
 				leftCol->OnCollisionStay(rightCol);
 				rightCol->OnCollisionStay(leftCol);
@@ -86,8 +82,8 @@ namespace ya
 		else
 		{
 			// Exit
-			// 이전프레임 충돌 o
-			// 현재는 충돌 x
+			// 이전프레임 충돌 O
+			// 현재는 충돌 X 
 			if (iter->second == true)
 			{
 				leftCol->OnCollisionExit(rightCol);

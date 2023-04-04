@@ -8,6 +8,7 @@
 #include "yaTransform.h"
 #include "yaCamera.h"
 #include "yaObject.h"
+#include "yaGround.h"
 
 namespace ya
 {
@@ -30,8 +31,10 @@ namespace ya
 		//Camera::SetTarget(mCuphead);
 		Scene::Initialize();
 		object::Instantiate<yaBgPlayScene>(Vector2(0.0f, 0.0f), eLayerType::BG);
-		mCuphead = object::Instantiate<Cuphead>(Vector2(400.0f, 400.0f), eLayerType::Player);
+		mCuphead = object::Instantiate<Cuphead>(Vector2(300.0f, 300.0f), eLayerType::Player);
 		object::Instantiate<Monster>(Vector2(500.0f, 500.0f), eLayerType::Monster);
+		object::Instantiate<Ground>(Vector2(0.0f, 800.0f), eLayerType::Ground);
+
 		// object::Instantiate<Monster>(Vector2(500.0f, 500.0f), eLayerType::Monster);
 
 		// Monster* monster = new Monster();
@@ -67,11 +70,14 @@ namespace ya
 		// Camera::SetTarget(mCuphead);
 
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
+
 	}
 	void PlayeScene::OnExit()
 	{
 		//mCuphead->SetPos(Vector2{ 0.0f, 0.0f });
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, false);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, false);
 		Camera::SetTarget(nullptr);
 
 	}

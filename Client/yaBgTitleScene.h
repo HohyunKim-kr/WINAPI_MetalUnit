@@ -17,6 +17,7 @@ namespace ya
 
 	private:
 		Image* mImage;
+		//Image* mUI;
 	};
 }
 

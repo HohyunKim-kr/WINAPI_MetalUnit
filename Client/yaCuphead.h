@@ -1,6 +1,5 @@
 #pragma once
 #include "yaGameObject.h"
-#include "yaImage.h"
 
 namespace ya
 {
@@ -28,12 +27,14 @@ namespace ya
 		virtual void OnCollisionEnter(class Collider* other) override;
 		virtual void OnCollisionStay(class Collider* other) override;
 		virtual void OnCollisionExit(class Collider* other) override;
-		
+
 	private:
 		void move();
 		void shoot();
 		void death();
 		void idle();
+
+		void idleCompleteEvent();
 
 	private:
 		eCupheadState mState;

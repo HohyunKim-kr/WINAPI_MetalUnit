@@ -141,6 +141,7 @@
     <ClInclude Include="yaCamera.h" />
     <ClInclude Include="yaCollider.h" />
     <ClInclude Include="yaCollisionManager.h" />
+    <ClInclude Include="yaGround.h" />
     <ClInclude Include="yaMonster.h" />
     <ClInclude Include="yaObject.h" />
     <ClInclude Include="yaResources.h" />
@@ -175,6 +176,7 @@
     <ClCompile Include="yaCamera.cpp" />
     <ClCompile Include="yaCollider.cpp" />
     <ClCompile Include="yaCollisionManager.cpp" />
+    <ClCompile Include="yaGround.cpp" />
     <ClCompile Include="yaMonster.cpp" />
     <ClCompile Include="yaResources.cpp" />
     <ClCompile Include="yaApplication.cpp" />
