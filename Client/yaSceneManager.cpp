@@ -2,6 +2,8 @@
 #include "yaPlayeScene.h"
 #include "yaTitleScene.h"
 #include "yaCollisionManager.h"
+#include "yaCamera.h"
+#include "yaToolScene.h"
 
 namespace ya
 {	
@@ -16,6 +18,7 @@ namespace ya
 
 		mScenes[(UINT)eSceneType::Title] = new TitleScene();
 		mScenes[(UINT)eSceneType::Play] = new PlayeScene();
+		// mScenes[(UINT)eSceneType::Play] = new PlayeScene();
 
 		mActiveScene = mScenes[(UINT)eSceneType::Play];
 

@@ -164,6 +164,7 @@
     <ClInclude Include="yaSceneManager.h" />
     <ClInclude Include="yaTime.h" />
     <ClInclude Include="yaTitleScene.h" />
+    <ClInclude Include="yaToolScene.h" />
     <ClInclude Include="yaTransform.h" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +196,7 @@
     <ClCompile Include="yaSceneManager.cpp" />
     <ClCompile Include="yaTime.cpp" />
     <ClCompile Include="yaTitleScene.cpp" />
+    <ClCompile Include="yaToolScene.cpp" />
     <ClCompile Include="yaTransform.cpp" />
   </ItemGroup>
   <ItemGroup>

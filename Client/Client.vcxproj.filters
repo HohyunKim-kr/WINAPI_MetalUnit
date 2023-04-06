@@ -74,6 +74,9 @@
     <Filter Include="Engine\Component\Transform">
       <UniqueIdentifier>{77a834d3-cd0a-405d-842f-9a5b916e8cab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Object">
+      <UniqueIdentifier>{e8ab8aba-778c-499d-b0e2-d66f6d2e4e68}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -181,7 +184,12 @@
     <ClInclude Include="yaRigidbody.h">
       <Filter>Engine\Component\RigidBody</Filter>
     </ClInclude>
-    <ClInclude Include="yaGround.h" />
+    <ClInclude Include="yaToolScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaGround.h">
+      <Filter>Contents\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -281,6 +289,11 @@
     <ClCompile Include="yaRigidbody.cpp">
       <Filter>Engine\Component\RigidBody</Filter>
     </ClCompile>
-    <ClCompile Include="yaGround.cpp" />
+    <ClCompile Include="yaToolScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaGround.cpp">
+      <Filter>Contents\Object</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
