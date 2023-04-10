@@ -6,7 +6,7 @@
 #include "yaToolScene.h"
 
 namespace ya
-{	
+{
 	//SceneManager scsene;
 	//SceneManager* scsene = new SceneManager();
 	std::vector<Scene*> SceneManager::mScenes = {};
@@ -18,17 +18,17 @@ namespace ya
 
 		mScenes[(UINT)eSceneType::Title] = new TitleScene();
 		mScenes[(UINT)eSceneType::Play] = new PlayeScene();
-		// mScenes[(UINT)eSceneType::Play] = new PlayeScene();
+		mScenes[(UINT)eSceneType::Tool] = new ToolScene();
 
-		mActiveScene = mScenes[(UINT)eSceneType::Play];
-
-		for ( Scene* scene : mScenes )
+		for (Scene* scene : mScenes)
 		{
 			if (scene == nullptr)
 				continue;
 
 			scene->Initialize();
- 		}
+		}
+
+		mActiveScene = mScenes[(UINT)eSceneType::Tool];
 	}
 
 	void SceneManager::Update()
@@ -39,6 +39,11 @@ namespace ya
 	void SceneManager::Render(HDC hdc)
 	{
 		mActiveScene->Render(hdc);
+	}
+
+	void SceneManager::Destroy()
+	{
+		mActiveScene->Destroy();
 	}
 
 	void SceneManager::Release()
@@ -55,13 +60,16 @@ namespace ya
 
 	void SceneManager::LoadScene(eSceneType type)
 	{
+		Camera::Clear();
+
 		// ÇöÀç¾À
 		mActiveScene->OnExit();
-		
-		CollisionManager::Clear();
 
+		CollisionManager::Clear();
 		//´ÙÀ½¾À
 		mActiveScene = mScenes[(UINT)type];
 		mActiveScene->OnEnter();
+
+
 	}
 }

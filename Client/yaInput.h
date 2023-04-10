@@ -60,8 +60,10 @@ namespace ya
 			return mKeys[static_cast<UINT>(keyCode)].state == eKeyState::Up;
 		}
 
+		static __forceinline Vector2 GetMousePos() { return mMousePos; }
 
 	private:
 		static std::vector<Key> mKeys;
+		static Vector2 mMousePos;
 	};
 }

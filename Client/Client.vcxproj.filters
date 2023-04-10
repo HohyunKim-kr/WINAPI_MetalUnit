@@ -190,6 +190,7 @@
     <ClInclude Include="yaGround.h">
       <Filter>Contents\Object</Filter>
     </ClInclude>
+    <ClInclude Include="yaTile.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -295,5 +296,6 @@
     <ClCompile Include="yaGround.cpp">
       <Filter>Contents\Object</Filter>
     </ClCompile>
+    <ClCompile Include="yaTile.cpp" />
   </ItemGroup>
 </Project>

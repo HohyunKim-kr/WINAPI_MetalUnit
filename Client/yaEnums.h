@@ -3,15 +3,17 @@
 
 enum class eSceneType
 {
-	Play,
 	Title,
+	Play,
 	Ending,
+	Tool,
 	End,
 };
 
 enum class eLayerType
 {
 	BG,
+	Tile,
 	Monster,
 	Player,
 	Bullet,
