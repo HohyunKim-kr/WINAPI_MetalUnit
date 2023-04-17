@@ -37,7 +37,6 @@ namespace ya
 		Rectangle(image->GetHdc(), -1, -1, image->mWidth + 1, image->mHeight + 1);
 		SelectObject(image->GetHdc(), oldBrush);
 		DeleteObject(oldBrush);
-		// BitBlt(image->GetHdc(), 0, 0, image->mWidth, image->mHeight);
 
 		return image;
 	}
@@ -78,5 +77,13 @@ namespace ya
 		DeleteObject(oldBitmap);
 
 		return S_OK;
+	}
+	COLORREF Image::GetPixel(int x, int y)
+	{
+		return ::GetPixel(mHdc, x, y);
+	}
+	void Image::SetPixel(int x, int y, COLORREF color)
+	{
+		::SetPixel(mHdc, x, y, color);
 	}
 }

@@ -31,9 +31,10 @@ namespace ya
 		//Camera::SetTarget(mCuphead);
 		Scene::Initialize();
 		object::Instantiate<yaBgPlayScene>(Vector2(0.0f, 0.0f), eLayerType::BG);
-		mCuphead = object::Instantiate<Cuphead>(Vector2(300.0f, 300.0f), eLayerType::Player);
+		Cuphead* player = object::Instantiate<Cuphead>(Vector2(300.0f, 300.0f), eLayerType::Player);
 		object::Instantiate<Monster>(Vector2(500.0f, 500.0f), eLayerType::Monster);
-		object::Instantiate<Ground>(Vector2(0.0f, 800.0f), eLayerType::Ground);
+		Ground* ground = object::Instantiate<Ground>(Vector2(0.0f, 800.0f), eLayerType::Ground);
+		// ground->SetPlayer(player);
 
 		// object::Instantiate<Monster>(Vector2(500.0f, 500.0f), eLayerType::Monster);
 
