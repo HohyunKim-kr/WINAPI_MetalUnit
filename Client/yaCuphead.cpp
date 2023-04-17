@@ -203,13 +203,19 @@ namespace ya
 	void Cuphead::shoot()
 	{
 		Transform* tr = GetComponent<Transform>();
+
 		if (Input::GetKey(eKeyCode::LBUTTON))
 		{
-			object::Instantiate<BaseBullet>(Vector2(400.0f, 400.0f), eLayerType::Bullet);
-			// Scene* curScene = SceneManager::GetActiveScene();
-			// BaseBullet* bullet = new BaseBullet();
-			// bullet->GetComponent<Transform>()->SetPos(tr->GetPos());
-			// curScene->AddGameObeject(bullet, eLayerType::Bullet);
+			// object::Instantiate<BaseBullet>(Vector2(400.0f, 400.0f), eLayerType::Bullet);
+			Scene* curScene = SceneManager::GetActiveScene();
+			BaseBullet* bullet = new BaseBullet();
+			bullet->GetComponent<Transform>()->SetPos(tr->GetPos());
+			curScene->AddGameObeject(bullet, eLayerType::Bullet);
+		}
+		else
+		{
+			mState = eCupheadState::Idle;
+			mAnimator->Play(L"falcon_Idle", true);		
 		}
 	}
 	void Cuphead::death()

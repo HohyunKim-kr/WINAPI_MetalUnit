@@ -37,8 +37,8 @@ namespace ya
 
 	void Tile::SetIndex(int index)
 	{
-		int maxCol =  1;//mAtlas->GetWidth() / TILE_SIZE_X;
-		int maxRow =  1;//mAtlas->GetHeight() / TILE_SIZE_Y;
+		int maxCol = mAtlas->GetWidth() / TILE_SIZE_X;
+		int maxRow = mAtlas->GetHeight() / TILE_SIZE_Y;
 
 		mY = index / maxCol;
 		mX = index % maxCol;

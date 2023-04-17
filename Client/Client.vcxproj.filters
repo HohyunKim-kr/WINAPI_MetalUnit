@@ -77,6 +77,9 @@
     <Filter Include="Contents\Object">
       <UniqueIdentifier>{e8ab8aba-778c-499d-b0e2-d66f6d2e4e68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents\Tile">
+      <UniqueIdentifier>{bb88af46-4b3a-4e70-a794-bb517066ad0d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -190,7 +193,12 @@
     <ClInclude Include="yaGround.h">
       <Filter>Contents\Object</Filter>
     </ClInclude>
-    <ClInclude Include="yaTile.h" />
+    <ClInclude Include="yaTile.h">
+      <Filter>Contents\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="yaTilePalatte.h">
+      <Filter>Contents\Tile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -296,6 +304,11 @@
     <ClCompile Include="yaGround.cpp">
       <Filter>Contents\Object</Filter>
     </ClCompile>
-    <ClCompile Include="yaTile.cpp" />
+    <ClCompile Include="yaTile.cpp">
+      <Filter>Contents\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="yaTilePalatte.cpp">
+      <Filter>Contents\Tile</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
