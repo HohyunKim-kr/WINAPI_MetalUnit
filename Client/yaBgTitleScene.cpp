@@ -17,7 +17,7 @@ namespace ya
 	void yaBgTitleScene::Initialize()
 	{
 		mImage = Resources::Load<Image>(L"title", L"..\\Resources\\ui_title_start.bmp");
-		Image* mImage2 = Resources::Load<Image>(L"title_ui", L"..\\Resources\\ui_title_renew_5_2.bmp");
+		mUI = Resources::Load<Image>(L"title_ui", L"..\\Resources\\ui_title_renew_5_2.bmp");
 		//mUI = Resources::Load<Image>(L"title", L"..\\Resources\\ui_title_renew_5_2.bmp");
 
 		GameObject::Initialize();
@@ -40,6 +40,10 @@ namespace ya
 		/*BitBlt(hdc, 0, 0, mapImage->GetWidth(), mapImage->GetHeight(), mapImage->GetHdc(), 0, 0, SRCCOPY);*/
 		StretchBlt(hdc, pos.x, pos.y, 1600, 900, mImage->GetHdc()
 			, 0, 0, mImage->GetWidth(), mImage->GetHeight(), SRCCOPY);
+		
+		StretchBlt(hdc, pos.x, pos.y, 1200, 300, mUI->GetHdc()
+			, 0, 0, mUI->GetWidth(), mUI->GetHeight(), SRCCOPY);
+
 		// GameObject::Render(hdc);
 		// Transform* tr = GetComponent<Transform>();
 		// Vector2 pos = tr->GetPos();

@@ -21,6 +21,7 @@ namespace ya
 	{
 		Scene::Initialize();
 		object::Instantiate<yaBgTitleScene>(Vector2::Zero, eLayerType::BG);
+		object::Instantiate<yaBgTitleScene>(Vector2::Zero, eLayerType::UI);
 		// yaBgTitleScene* mTitleScene = new yaBgTitleScene();
 		// AddGameObeject(mTitleScene, eLayerType::BG);
 	}

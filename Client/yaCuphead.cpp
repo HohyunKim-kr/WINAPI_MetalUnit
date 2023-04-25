@@ -30,6 +30,7 @@ namespace ya
 		Image* mImage2 = Resources::Load<Image>(L"falcon_right", L"..\\Resources\\gp_right[8].bmp");
 		Image* mImage3 = Resources::Load<Image>(L"falcon_jump", L"..\\Resources\\gp_jump[4].bmp");
 		Image* mImage4 = Resources::Load<Image>(L"gp_unit_gun", L"..\\Resources\\gp_unit_FalconUnit_renewer_attack[3].bmp");
+		Image* mImage5 = Resources::Load<Image>(L"gp_unit_sword", L"..\\Resources\\gp_unit_FalconUnit_renewer_attack2.bmp");
 
 		mAnimator = AddComponent<Animator>();
 		// mAnimator->CreateAnimation(L"IdleR", mImageR, Vector2(120.0f * 0, 120.0f * 0), 120.0f, 30, 60, 4, Vector2::Zero, 0.15);
@@ -37,6 +38,7 @@ namespace ya
 		mAnimator->CreateAnimation(L"falcon_right", mImage2, Vector2::Zero, 8, 1, 8, Vector2::Zero, 0.1f);
 		mAnimator->CreateAnimation(L"falcon_jump", mImage3, Vector2::Zero, 4, 1, 4, Vector2::Zero, 0.1f);
 		mAnimator->CreateAnimation(L"gp_unit_gun", mImage4, Vector2::Zero, 3, 1, 3, Vector2::Zero, 0.1f);
+		mAnimator->CreateAnimation(L"gp_unit_sword", mImage5, Vector2::Zero, 4, 4, 4, Vector2::Zero, 0.1f);
 
 		// mAnimator->CreateAnimations(L"..\\Resources\\gp_unit_FalconUnit_renewer_attack[3]", Vector2::Zero, 0.1f);
 
@@ -62,8 +64,14 @@ namespace ya
 		case ya::Cuphead::eCupheadState::Move:
 			move();
 			break;
+		case ya::Cuphead::eCupheadState::Dash:
+			dash();
+			break;
 		case ya::Cuphead::eCupheadState::Shoot:
 			shoot();
+			break;
+		case ya::Cuphead::eCupheadState::Attack:
+			attack();
 			break;
 		case ya::Cuphead::eCupheadState::Death:
 			death();
@@ -162,7 +170,7 @@ namespace ya
 	}
 	void Cuphead::OnCollisionStay(Collider* other)
 	{
-
+		 
 	}
 	void Cuphead::OnCollisionExit(Collider* other)
 	{
@@ -173,7 +181,8 @@ namespace ya
 		if (Input::GetKeyUp(eKeyCode::A)
 			|| Input::GetKeyUp(eKeyCode::D)
 			|| Input::GetKeyUp(eKeyCode::S)
-			|| Input::GetKeyUp(eKeyCode::W))
+			|| Input::GetKeyUp(eKeyCode::W)
+			|| Input::GetKeyDown(eKeyCode::SPACE))
 		{
 			mState = eCupheadState::Idle;
 			mAnimator->Play(L"falcon_Idle", true);
@@ -200,11 +209,42 @@ namespace ya
 
 		tr->SetPos(pos);
 	}
+	// void Cuphead::jump()
+	// {
+	// 	if (Input::GetKeyDown(eKeyCode::SPACE))
+	// 	{
+	// 		Vector2 velocity = mRigidbody->GetVelocity();
+	// 		velocity.y -= 500.0f;
+	// 
+	// 		mRigidbody->SetVelocity(velocity);
+	// 		mRigidbody->SetGround(false);
+	// 	}
+	// 	else
+	// 	{
+	// 		mState = eCupheadState::Idle;
+	// 		mAnimator->Play(L"falcon_Idle", true);
+	// 	}
+	// }
+	void Cuphead::dash()
+	{
+		Transform* tr = GetComponent<Transform>();
+		Vector2 pos = tr->GetPos();
+
+		if (Input::GetKey(eKeyCode::SHIFT))
+		{
+			mRigidbody->AddForce(Vector2(400.0f, 0.0f));
+		}
+		else
+		{
+			mState = eCupheadState::Idle;
+			mAnimator->Play(L"falcon_Idle", true);
+		}
+	}
 	void Cuphead::shoot()
 	{
 		Transform* tr = GetComponent<Transform>();
 
-		if (Input::GetKey(eKeyCode::LBUTTON))
+		if (Input::GetKey(eKeyCode::RBUTTON))
 		{
 			// object::Instantiate<BaseBullet>(Vector2(400.0f, 400.0f), eLayerType::Bullet);
 			Scene* curScene = SceneManager::GetActiveScene();
@@ -218,6 +258,20 @@ namespace ya
 			mAnimator->Play(L"falcon_Idle", true);		
 		}
 	}
+	void Cuphead::attack()
+	{
+		Transform* tr = GetComponent<Transform>();
+
+		if(Input::GetKey(eKeyCode::LBUTTON))
+		{
+			
+		}
+		else
+		{
+			mState = eCupheadState::Idle;
+			mAnimator->Play(L"falcon_Idle", true);
+		}
+	}
 	void Cuphead::death()
 	{
 	}
@@ -227,7 +281,8 @@ namespace ya
 		if (Input::GetKeyDown(eKeyCode::A)
 			|| Input::GetKeyDown(eKeyCode::D)
 			|| Input::GetKeyDown(eKeyCode::S)
-			|| Input::GetKeyDown(eKeyCode::W))
+			|| Input::GetKeyDown(eKeyCode::W)
+			|| Input::GetKeyDown(eKeyCode::SPACE))
 		{
 			mState = eCupheadState::Move;
 			mAnimator->Play(L"falcon_right", true);
@@ -237,15 +292,30 @@ namespace ya
 		{
 			Vector2 velocity = mRigidbody->GetVelocity();
 			velocity.y -= 500.0f;
-
+			
 			mRigidbody->SetVelocity(velocity);
 			mRigidbody->SetGround(false);
+		
+			mState = eCupheadState::Move;
+			mAnimator->Play(L"falcon_jump", true);
+		}
+
+		if (Input::GetKeyDown(eKeyCode::RBUTTON))
+		{
+			mState = eCupheadState::Shoot;
+			mAnimator->Play(L"gp_unit_gun", true);
 		}
 
 		if (Input::GetKeyDown(eKeyCode::LBUTTON))
 		{
-			mState = eCupheadState::Shoot;
-			mAnimator->Play(L"gp_unit_gun", true);
+			mState = eCupheadState::Attack;
+			mAnimator->Play(L"gp_unit_sword", true);
+		}
+
+		if (Input::GetKeyDown(eKeyCode::SHIFT))
+		{
+			mState = eCupheadState::Dash;
+			mAnimator->Play(L"gp_unit_sword", true);
 		}
 	}
 

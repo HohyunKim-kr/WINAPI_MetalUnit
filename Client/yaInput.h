@@ -9,7 +9,7 @@ namespace ya
 		A, S, D, F, G, H, J, K, L,
 		Z, X, C, V, B, N, M,
 
-		UP, DOWN, LEFT, RIGHT, SPACE,
+		UP, DOWN, LEFT, RIGHT, SPACE, SHIFT,
 		LBUTTON, RBUTTON,
 		END,
 	};
