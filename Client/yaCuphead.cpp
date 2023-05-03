@@ -240,6 +240,110 @@ namespace ya
 			mAnimator->Play(L"falcon_Idle", true);
 		}
 	}
+	void Cuphead::jump()
+	{
+		Vector2 mVelocity = mRigidbody->GetVelocity();
+		//mVelocity.y -= 500.0f;
+		//
+		//mRigidbody->SetVelocity(mVelocity);
+		//mRigidbody->SetGround(false);
+		//mState = eCupheadState::Idle ;
+		if (mVelocity.y >= 0)
+		
+		{
+			mState = eCupheadState::Fall;
+		
+		
+			switch (mDirect)
+			{
+			case eDirection::Left:
+				mAnimator->Play(L"LeftFall", false);
+				break;
+			case eDirection::Right:
+				mAnimator->Play(L"RightFall", false);
+				break;
+			default:
+				break;
+			}
+		
+		}
+		if (Input::GetKeyDown(eKeyCode::SHIFT))
+		{
+			mState = eCupheadState::Dash;
+
+
+			switch (mDirect)
+			{
+			case eDirection::Left:
+			{
+				mAnimator->Play(L"LeftDash", false);
+				break;
+			}
+			case eDirection::Right:
+			{
+				mAnimator->Play(L"RightDash", false);
+				break;
+			}
+			}
+
+
+		}
+
+
+		if (Input::GetKeyDown(eKeyCode::SPACE))
+		{
+			mState = eCupheadState::JumpAttack;
+
+
+			switch (mDirect)
+			{
+			case eDirection::Left:
+				mAnimator->Play(L"falcon_jump", true);
+				break;
+
+			case eDirection::Right:
+				mAnimator->Play(L"falcon_jump", true);
+				break;
+
+			default:
+				break;
+			}
+
+		}
+
+		// if (Input::GetKeyDown(eKeyCode::A))
+		// {
+		// 	mState = eCupheadState::SkillA;
+		// }
+		// 
+		// 
+		// 
+		// if (Input::GetKeyDown(eKeyCode::S))
+		// {
+		// 	mState = eCupheadState::SkillS;
+		// }
+
+
+
+		//¿Ãµø ∫Œ
+
+		Transform* tr = GetComponent<Transform>();
+		Vector2 pos = tr->GetPos();
+
+		if (Input::GetKey(eKeyCode::A))
+		{
+			pos.x -= 200.0f * Time::DeltaTime();
+			//mRigidbody->AddForce(Vector2(-200.0f, 0.0f));
+		}
+
+		if (Input::GetKey(eKeyCode::D))
+		{
+			pos.x += 200.0f * Time::DeltaTime();
+			//mRigidbody->AddForce(Vector2(200.0f, 0.0f));
+
+		}
+		tr->SetPos(pos);
+	}
 	void Cuphead::shoot()
 	{
 		Transform* tr = GetComponent<Transform>();
@@ -296,8 +400,22 @@ namespace ya
 			mRigidbody->SetVelocity(velocity);
 			mRigidbody->SetGround(false);
 		
-			mState = eCupheadState::Move;
+			//mState = eCupheadState::Jump;
 			mAnimator->Play(L"falcon_jump", true);
+			//switch (mDirect)
+			//{
+			//case eDirection::Left:
+			//	mAnimator->Play(L"falcon_jump", true);
+			//	break;
+			//
+			//case eDirection::Right:
+			//	mAnimator->Play(L"falcon_jump", true);
+			//	break;
+			//
+			//default:
+			//	break;
+			//}
+
 		}
 
 		if (Input::GetKeyDown(eKeyCode::RBUTTON))

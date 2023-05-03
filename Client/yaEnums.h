@@ -5,6 +5,7 @@ enum class eSceneType
 {
 	Title,
 	Play,
+	Boss,
 	Ending,
 	Tool,
 	End,
@@ -32,5 +33,18 @@ enum class eComponentType
 	Collider,
 	Rigidbody,
 	Audio,
+	End,
+};
+
+enum class eDirection
+{
+	Left,
+	Right,
+	Up,
+	Down,
+	LeftUp,
+	RightUp,
+	LeftDown,
+	RightDown,
 	End,
 };

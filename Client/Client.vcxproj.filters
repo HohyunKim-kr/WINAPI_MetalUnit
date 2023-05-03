@@ -199,6 +199,12 @@
     <ClInclude Include="yaTilePalatte.h">
       <Filter>Contents\Tile</Filter>
     </ClInclude>
+    <ClInclude Include="yaBossScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaBgBossScene.h">
+      <Filter>Contents\SceneObj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -309,6 +315,12 @@
     </ClCompile>
     <ClCompile Include="yaTilePalatte.cpp">
       <Filter>Contents\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="yaBossScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaBgBossScene.cpp">
+      <Filter>Contents\SceneObj</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

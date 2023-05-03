@@ -8,7 +8,7 @@
 #include "yaCollider.h"
 #include "yaBaseBullet.h"
 #include "yaScene.h"
-
+#include "yaRigidbody.h"
 
 namespace ya
 {
@@ -34,10 +34,15 @@ namespace ya
 		Collider* collider = AddComponent<Collider>();
 		collider->SetCenter(Vector2(-60.0f, -80.0f));
 
+		//mRigidbody = AddComponent<Rigidbody>();
+		//mRigidbody->SetMass(1.0f);
+
 		GameObject::Initialize();
 	}
 	void Monster::Update()
 	{
+		//mRigidbody->AddForce(Vector2(0.0f, 0.0f));
+
 		GameObject::Update();
 	}
 	void Monster::Render(HDC hdc)

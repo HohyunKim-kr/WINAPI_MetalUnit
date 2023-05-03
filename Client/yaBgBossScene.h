@@ -1,15 +1,14 @@
 #pragma once
 #include "yaGameObject.h"
+#include "yaImage.h"
 
 namespace ya
 {
-	class Rigidbody;
-	class Animator;
-	class Monster : public GameObject
+	class yaBgBossScene : public GameObject
 	{
 	public:
-		Monster();
-		~Monster();
+		yaBgBossScene();
+		~yaBgBossScene();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -17,7 +16,10 @@ namespace ya
 		virtual void Release() override;
 
 	private:
-		Animator* mAnimator;
-		Rigidbody* mRigidbody;
+		Image* mImage;
 	};
 }
+
+
+
+

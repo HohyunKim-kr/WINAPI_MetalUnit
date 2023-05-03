@@ -1,5 +1,5 @@
-#include "yaPlayeScene.h"
-#include "yaBgPlayScene.h"
+#include "yaBossScene.h"
+#include "yaBgBossScene.h"
 #include "yaCuphead.h"
 #include "yaInput.h"
 #include "yaSceneManager.h"
@@ -12,15 +12,15 @@
 #include "yaTilePalatte.h"
 namespace ya
 {
-	PlayeScene::PlayeScene()
+	BossScene::BossScene()
 	{
 	}
 
-	PlayeScene::~PlayeScene()
+	BossScene::~BossScene()
 	{
 	}
 
-	void PlayeScene::Initialize()
+	void BossScene::Initialize()
 	{
 		//mPlayScene = new yaBgPlayScene();
 		//AddGameObeject(mPlayScene, eLayerType::BG);
@@ -30,11 +30,11 @@ namespace ya
 
 		//Camera::SetTarget(mCuphead);
 		Scene::Initialize();
-		object::Instantiate<yaBgPlayScene>(Vector2(0.0f, 0.0f), eLayerType::BG);
+		object::Instantiate<yaBgBossScene>(Vector2(0.0f, 0.0f), eLayerType::BG);
 		Cuphead* player = object::Instantiate<Cuphead>(Vector2(300.0f, 300.0f), eLayerType::Player);
 		Monster* monster = object::Instantiate<Monster>(Vector2(500.0f, 500.0f), eLayerType::Monster);
 		Ground* ground1 = object::Instantiate<Ground>(Vector2(0.0f, 780.0f), eLayerType::Ground);
-		
+
 		// ground->SetPlayer(player);
 
 		// object::Instantiate<Monster>(Vector2(500.0f, 500.0f), eLayerType::Monster);
@@ -47,13 +47,13 @@ namespace ya
 		// monster->GetComponent<Transform>()->SetPos(Vector2(300.0f, 500.0f));
 	}
 
-	void PlayeScene::Update()
+	void BossScene::Update()
 	{
 		Scene::Update();
 
 		if (Input::GetKeyState(eKeyCode::N) == eKeyState::Down)
 		{
-			SceneManager::LoadScene(eSceneType::Boss);
+			SceneManager::LoadScene(eSceneType::Title);
 		}
 		if (Input::GetKeyDown(eKeyCode::L))
 		{
@@ -61,17 +61,17 @@ namespace ya
 		}
 	}
 
-	void PlayeScene::Render(HDC hdc)
+	void BossScene::Render(HDC hdc)
 	{
 		//Super::Tick();
 		Scene::Render(hdc);
 	}
 
-	void PlayeScene::Release()
+	void BossScene::Release()
 	{
 		Scene::Release();
 	}
-	void PlayeScene::OnEnter()
+	void BossScene::OnEnter()
 	{
 		// Camera::SetTarget(mCuphead);
 
@@ -80,7 +80,7 @@ namespace ya
 		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Ground, true);
 
 	}
-	void PlayeScene::OnExit()
+	void BossScene::OnExit()
 	{
 		//mCuphead->SetPos(Vector2{ 0.0f, 0.0f });
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, false);

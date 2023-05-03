@@ -6,6 +6,7 @@
 #include "yaObject.h"
 #include "yaInput.h"
 #include "yaTilePalatte.h"
+#include "yaCamera.h"
 
 extern ya::Application application;
 
@@ -29,17 +30,24 @@ namespace ya
 	void ToolScene::Update()
 	{
 		Scene::Update();
-
 		Vector2  temp = Input::GetMousePos();
-
-
-		if (Input::GetKey(eKeyCode::LBUTTON))
+		if (Input::GetKeyDown(eKeyCode::LBUTTON))
 		{
 			Vector2 pos = Input::GetMousePos();
+			pos -= Camera::CalcuatePos(Vector2::Zero);
+
 			pos = TilePalatte::GetTilePos(pos);
 
 			UINT tileIndxe = TilePalatte::GetIndex();
 			TilePalatte::CreateTile(tileIndxe, pos);
+		}
+		if (Input::GetKeyDown(eKeyCode::S))
+		{
+			TilePalatte::Save();
+		}
+		if (Input::GetKeyDown(eKeyCode::L))
+		{
+			TilePalatte::Load();
 		}
 	}
 
@@ -48,21 +56,25 @@ namespace ya
 		HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
 		HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
 
+
+		Vector2 startPos(0, 0);
+		startPos = Camera::CalcuatePos(startPos);
+
 		int maxRow = application.GetHeight() / TILE_SIZE_Y + 1;
-		for (size_t y = 0; y < maxRow; y++)
+		for (size_t y = 0; y < maxRow * 3; y++)
 		{
-			MoveToEx(hdc, 0, TILE_SIZE_Y * y, NULL);
-			LineTo(hdc, application.GetWidth(), TILE_SIZE_Y * y);
+			MoveToEx(hdc, startPos.x, TILE_SIZE_Y * y + startPos.y, NULL);
+			LineTo(hdc, application.GetWidth(), TILE_SIZE_Y * y + startPos.y);
 		}
 		int maxColumn = application.GetWidth() / TILE_SIZE_X + 1;
-		for (size_t x = 0; x < maxColumn; x++)
+
+		for (size_t x = 0; x < maxColumn * 3; x++)
 		{
-			MoveToEx(hdc, TILE_SIZE_X * x, 0, NULL);
-			LineTo(hdc, TILE_SIZE_X * x, application.GetHeight());
+			MoveToEx(hdc, TILE_SIZE_X * x + startPos.x, startPos.y, NULL);
+			LineTo(hdc, TILE_SIZE_X * x + startPos.x, application.GetHeight());
 		}
 		(HPEN)SelectObject(hdc, oldPen);
 		DeleteObject(redPen);
-
 
 		Scene::Render(hdc);
 	}
@@ -92,7 +104,8 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 		//512 384
 		//HMENU mMenubar = LoadMenu(nullptr, MAKEINTRESOURCE(IDC_CLIENT));
 		//SetMenu(hWnd, mMenubar);
-		ya::Image* tile = ya::Resources::Load<ya::Image>(L"TileAtlas", L"..\\Resources\\Tile.bmp");
+		ya::Image* tile = ya::Resources::Load<ya::Image>(L"TileAtlas", L"..\\Resources\\gp_tilemap_grass_pattern_stone[5][3].bmp");
+		//ya::Image* tile = ya::Resources::Load<ya::Image>(L"TileAtlas", L"..\\Resources\\Tile.bmp");
 		RECT rect = { 0, 0, tile->GetWidth(), tile->GetHeight() };
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
@@ -117,7 +130,7 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 			int x = mousePos.x / TILE_SIZE_X;
 			int y = mousePos.y / TILE_SIZE_Y;
 
-			int index = (y * 8) + (x % 8);
+			int index = (y * 5) + (x % 5);
 
 			ya::TilePalatte::SetIndex(index);
 		}

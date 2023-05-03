@@ -5,6 +5,16 @@
 
 namespace ya
 {
+	union TileID
+	{
+		struct
+		{
+			UINT32 x;
+			UINT32 y;
+		};
+		UINT64 id;
+	};
+
 	class TilePalatte
 	{
 	public:

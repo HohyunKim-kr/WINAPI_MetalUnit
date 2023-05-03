@@ -136,8 +136,10 @@
     <ClInclude Include="yaAnimation.h" />
     <ClInclude Include="yaAnimator.h" />
     <ClInclude Include="yaBaseBullet.h" />
+    <ClInclude Include="yaBgBossScene.h" />
     <ClInclude Include="yaBgPlayScene.h" />
     <ClInclude Include="yaBgTitleScene.h" />
+    <ClInclude Include="yaBossScene.h" />
     <ClInclude Include="yaCamera.h" />
     <ClInclude Include="yaCollider.h" />
     <ClInclude Include="yaCollisionManager.h" />
@@ -174,8 +176,10 @@
     <ClCompile Include="yaAnimation.cpp" />
     <ClCompile Include="yaAnimator.cpp" />
     <ClCompile Include="yaBaseBullet.cpp" />
+    <ClCompile Include="yaBgBossScene.cpp" />
     <ClCompile Include="yaBgPlayScene.cpp" />
     <ClCompile Include="yaBgTitleScene.cpp" />
+    <ClCompile Include="yaBossScene.cpp" />
     <ClCompile Include="yaCamera.cpp" />
     <ClCompile Include="yaCollider.cpp" />
     <ClCompile Include="yaCollisionManager.cpp" />

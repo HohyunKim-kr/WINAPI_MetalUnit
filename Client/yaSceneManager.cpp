@@ -1,6 +1,7 @@
 #include "yaSceneManager.h"
 #include "yaPlayeScene.h"
 #include "yaTitleScene.h"
+#include "yaBossScene.h"
 #include "yaCollisionManager.h"
 #include "yaCamera.h"
 #include "yaToolScene.h"
@@ -18,6 +19,7 @@ namespace ya
 
 		mScenes[(UINT)eSceneType::Title] = new TitleScene();
 		mScenes[(UINT)eSceneType::Play] = new PlayeScene();
+		mScenes[(UINT)eSceneType::Boss] = new BossScene();
 		mScenes[(UINT)eSceneType::Tool] = new ToolScene();
 
 		for (Scene* scene : mScenes)

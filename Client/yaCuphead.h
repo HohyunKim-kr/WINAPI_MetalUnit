@@ -12,8 +12,11 @@ namespace ya
 		{
 			Move,
 			Dash,
+			Jump,
+			Fall,
 			Shoot,
 			Attack,
+			JumpAttack,
 			Death,
 			Idle,
 		};
@@ -33,6 +36,7 @@ namespace ya
 	private:
 		void move();
 		void dash();
+		void jump();
 		void shoot();
 		void attack();
 		void death();
@@ -42,6 +46,8 @@ namespace ya
 
 	private:
 		eCupheadState mState;
+		eDirection mDirect;
+
 		Animator* mAnimator;
 		Rigidbody* mRigidbody;
 	};
