@@ -205,6 +205,9 @@
     <ClInclude Include="yaBgBossScene.h">
       <Filter>Contents\SceneObj</Filter>
     </ClInclude>
+    <ClInclude Include="yaBossMonsterEVE.h">
+      <Filter>Contents\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -321,6 +324,9 @@
     </ClCompile>
     <ClCompile Include="yaBgBossScene.cpp">
       <Filter>Contents\SceneObj</Filter>
+    </ClCompile>
+    <ClCompile Include="yaBossMonsterEVE.cpp">
+      <Filter>Contents\Monster</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

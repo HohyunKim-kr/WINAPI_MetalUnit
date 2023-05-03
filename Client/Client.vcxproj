@@ -44,7 +44,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <EnableUnitySupport>false</EnableUnitySupport>
+    <EnableUnitySupport>true</EnableUnitySupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -139,6 +139,7 @@
     <ClInclude Include="yaBgBossScene.h" />
     <ClInclude Include="yaBgPlayScene.h" />
     <ClInclude Include="yaBgTitleScene.h" />
+    <ClInclude Include="yaBossMonsterEVE.h" />
     <ClInclude Include="yaBossScene.h" />
     <ClInclude Include="yaCamera.h" />
     <ClInclude Include="yaCollider.h" />
@@ -179,6 +180,7 @@
     <ClCompile Include="yaBgBossScene.cpp" />
     <ClCompile Include="yaBgPlayScene.cpp" />
     <ClCompile Include="yaBgTitleScene.cpp" />
+    <ClCompile Include="yaBossMonsterEVE.cpp" />
     <ClCompile Include="yaBossScene.cpp" />
     <ClCompile Include="yaCamera.cpp" />
     <ClCompile Include="yaCollider.cpp" />

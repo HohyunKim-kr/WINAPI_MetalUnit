@@ -3,7 +3,7 @@
 #include "yaCuphead.h"
 #include "yaInput.h"
 #include "yaSceneManager.h"
-#include "yaMonster.h"
+#include "yaBossMonsterEVE.h"
 #include "yaCollisionManager.h"
 #include "yaTransform.h"
 #include "yaCamera.h"
@@ -32,7 +32,7 @@ namespace ya
 		Scene::Initialize();
 		object::Instantiate<yaBgBossScene>(Vector2(0.0f, 0.0f), eLayerType::BG);
 		Cuphead* player = object::Instantiate<Cuphead>(Vector2(300.0f, 300.0f), eLayerType::Player);
-		Monster* monster = object::Instantiate<Monster>(Vector2(500.0f, 500.0f), eLayerType::Monster);
+		BossMonsterEVE* BossMonster = object::Instantiate<BossMonsterEVE>(Vector2(1200.0f, 300.0f), eLayerType::Boss);
 		Ground* ground1 = object::Instantiate<Ground>(Vector2(0.0f, 780.0f), eLayerType::Ground);
 
 		// ground->SetPlayer(player);
@@ -75,17 +75,17 @@ namespace ya
 	{
 		// Camera::SetTarget(mCuphead);
 
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Boss, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, true);
-		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Ground, true);
+		CollisionManager::SetLayer(eLayerType::Boss, eLayerType::Ground, true);
 
 	}
 	void BossScene::OnExit()
 	{
 		//mCuphead->SetPos(Vector2{ 0.0f, 0.0f });
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, false);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Boss, false);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Ground, false);
-		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Ground, false);
+		CollisionManager::SetLayer(eLayerType::Boss, eLayerType::Ground, false);
 
 		Camera::SetTarget(nullptr);
 
